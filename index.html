@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>예감소 : ON — 예술감각연구소</title>
+<meta name="description" content="우리 모두는 원래 예술인이었다. 스위치를 끄고 싶어서 끈 사람은 없어요. 잠든 감각을 살며시 깨우는 예술감각연구소, 예감소. 창작 워크숍·브랜드 협업·시민 프로그램을 함께합니다.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2.5' y='9' width='27' height='14' rx='7' fill='%236C43E0'/><circle cx='22' cy='16' r='5.4' fill='white'/><circle cx='22' cy='16' r='2' fill='%2310B84E'/></svg>">
+<style>
+  :root{
+    --paper:#FAF9F6; --paper-2:#F1EFF6; --paper-3:#E8E4F0;
+    --ink:#1A1622; --ink-soft:#514B5E; --ink-mute:#8A8496;
+    --line:#E6E2EF;
+    --on:#6C43E0; --on-bright:#7E58F5;
+    --spark:#10B84E; --spark-soft:#D8F5E2;
+    --shadow:rgba(26,22,34,.11);
+    --sans:'Apple SD Gothic Neo','Pretendard','Pretendard Variable',-apple-system,system-ui,'Malgun Gothic','Segoe UI',sans-serif;
+    --mono:'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;
+    --measure:36rem;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#060608; --paper-2:#100E15; --paper-3:#1A1722;
+      --ink:#F1EEF6; --ink-soft:#BAB4C6; --ink-mute:#837D90;
+      --line:#242030;
+      --on:#9B7BFF; --on-bright:#B49BFF;
+      --spark:#2FDA69; --spark-soft:#14301c;
+      --shadow:rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#FAF9F6; --paper-2:#F1EFF6; --paper-3:#E8E4F0;
+    --ink:#1A1622; --ink-soft:#514B5E; --ink-mute:#8A8496;
+    --line:#E6E2EF; --on:#6C43E0; --on-bright:#7E58F5; --spark:#10B84E; --spark-soft:#D8F5E2; --shadow:rgba(26,22,34,.11);
+  }
+  :root[data-theme="dark"]{
+    --paper:#060608; --paper-2:#100E15; --paper-3:#1A1722;
+    --ink:#F1EEF6; --ink-soft:#BAB4C6; --ink-mute:#837D90;
+    --line:#242030; --on:#9B7BFF; --on-bright:#B49BFF; --spark:#2FDA69; --spark-soft:#14301c; --shadow:rgba(0,0,0,.5);
+  }
+
+  *{ box-sizing:border-box }
+  html{ -webkit-text-size-adjust:100% }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans);
+    font-size:18px; line-height:1.78; letter-spacing:-.005em;
+    word-break:keep-all; overflow-wrap:break-word; text-wrap:pretty;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    transition:background .5s ease, color .5s ease; overflow-x:hidden;
+  }
+
+  /* 감각 OFF — 불이 꺼진다 */
+  body.is-off{
+    --paper:#040404; --paper-2:#0e0e0e; --paper-3:#161616;
+    --ink:#6a6a6a; --ink-soft:#474747; --ink-mute:#3a3a3a;
+    --line:#1d1d1d;
+    --on:#5a5a5a; --on-bright:#666; --spark:#5a5a5a; --spark-soft:#161616;
+    --shadow:rgba(0,0,0,.6);
+  }
+  body.is-off .brand .on{ color:#8a8a8a }
+  body.is-off .navlink{ color:#565656 }
+  body.is-off .switch{ color:#e4e4e4 }
+  body.is-off .switch b{ color:#fff }
+  body.is-off .track{ background:#4b3f6b; border-color:#6a5c92 }
+  body.is-off .knob{ background:#cabcff; box-shadow:0 0 12px 2px rgba(165,135,255,.85) }
+  body.is-off .btn-fill{ background:#3a3a3a; border-color:#3a3a3a; color:#9a9a9a }
+  body.is-off .switch-art .glow, body.is-off .switch-art .ring, body.is-off .switch-art .sparks{ opacity:0 }
+
+  .wrap{ max-width:70rem; margin:0 auto; padding:0 clamp(1.25rem,5vw,4rem) }
+  .col{ max-width:var(--measure) }
+
+  a{ color:inherit; text-decoration:none }
+  h1,h2,h3{ margin:0; font-weight:800; line-height:1.18; letter-spacing:-.025em; text-wrap:balance }
+
+  .kicker{ font-family:var(--mono); font-size:.74rem; letter-spacing:.02em; color:var(--ink-mute); text-transform:uppercase }
+  .mark{ background:linear-gradient(transparent 58%, color-mix(in srgb,var(--spark) 42%,transparent) 58%); padding:0 .06em }
+  .mark-on{ background:linear-gradient(transparent 62%, color-mix(in srgb,var(--spark) 34%,transparent) 62%); padding:0 .05em }
+
+  /* 다크 모드 — 헤드라인이 켜진다 */
+  @media (prefers-color-scheme:dark){
+    .hero h1{ text-shadow:0 0 40px color-mix(in srgb,var(--on) 34%,transparent) }
+    .hero h1 .mark{ text-shadow:0 0 22px color-mix(in srgb,var(--spark) 55%,transparent) }
+  }
+  :root[data-theme="dark"] .hero h1{ text-shadow:0 0 40px color-mix(in srgb,var(--on) 34%,transparent) }
+  :root[data-theme="dark"] .hero h1 .mark{ text-shadow:0 0 22px color-mix(in srgb,var(--spark) 55%,transparent) }
+  :root[data-theme="light"] .hero h1, :root[data-theme="light"] .hero h1 .mark{ text-shadow:none }
+  body.is-off .hero h1, body.is-off .hero h1 .mark{ text-shadow:none }
+
+  header.bar{ position:sticky; top:0; z-index:20; background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line) }
+  .bar-in{ max-width:70rem; margin:0 auto; padding:.75rem clamp(1.25rem,5vw,4rem);
+    display:flex; align-items:center; justify-content:space-between; gap:1rem }
+  .brand{ display:flex; align-items:center; gap:.1rem; font-family:var(--mono); font-weight:700; font-size:1rem; letter-spacing:0 }
+  .brand .on{ color:var(--on) }
+  .brand .dot{ width:.44rem; height:.44rem; border-radius:50%; background:var(--spark); margin-left:.35rem;
+    animation:pulse 2.2s infinite }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--spark) 55%,transparent)} 70%{box-shadow:0 0 0 6px transparent} 100%{box-shadow:0 0 0 0 transparent} }
+  .bar-right{ display:flex; align-items:center; gap:1.3rem }
+  .navlink{ font-size:.9rem; font-weight:600; color:var(--ink-soft) }
+  .navlink:hover{ color:var(--on) }
+  @media(max-width:820px){ .navlink{ display:none } }
+
+  .switch{ display:flex; align-items:center; gap:.5rem; cursor:pointer; user-select:none;
+    font-family:var(--mono); font-size:.72rem; letter-spacing:0; color:var(--ink-mute); background:none; border:0; padding:0 }
+  .track{ width:2.5rem; height:1.35rem; border-radius:1rem; background:var(--paper-3); border:1px solid var(--line);
+    position:relative; transition:background .3s }
+  .knob{ position:absolute; top:1px; left:1px; width:1.1rem; height:1.1rem; border-radius:50%; background:var(--on);
+    transition:transform .28s cubic-bezier(.4,1.3,.5,1); box-shadow:0 1px 2px var(--shadow) }
+  body:not(.is-off) .track{ background:color-mix(in srgb,var(--on) 26%,var(--paper-3)) }
+  body:not(.is-off) .knob{ transform:translateX(1.15rem) }
+  .switch b{ color:var(--on); font-weight:700 }
+
+  .hero{ padding:clamp(3.5rem,10vw,7.5rem) 0 clamp(3rem,7vw,5rem); position:relative }
+  .hero .kicker{ display:inline-flex; align-items:center; gap:.6rem; margin-bottom:1.5rem }
+  .hero .kicker::before{ content:""; width:1.8rem; height:1px; background:var(--ink-mute) }
+  .hero h1{ font-size:clamp(2.6rem,8.5vw,5rem); line-height:1.08; margin-bottom:1.4rem }
+  .lede{ font-size:clamp(1.08rem,2.3vw,1.3rem); line-height:1.7; color:var(--ink-soft); max-width:33rem; margin:0 0 2.2rem }
+  .lede b{ color:var(--ink); font-weight:700 }
+  .cta-row{ display:flex; flex-wrap:wrap; gap:.75rem; align-items:center }
+  .btn{ font-family:var(--sans); font-size:1rem; font-weight:700; padding:.9rem 1.6rem; border-radius:4px;
+    border:1.5px solid var(--on); cursor:pointer; transition:.18s; display:inline-flex; align-items:center; gap:.5rem }
+  .btn-fill{ background:var(--on); color:#fff }
+  .btn-fill:hover{ background:var(--on-bright); transform:translateY(-2px) }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--line) }
+  .btn-ghost:hover{ border-color:var(--on); color:var(--on) }
+  .btn .arw{ transition:transform .2s } .btn:hover .arw{ transform:translate(3px,-3px) }
+
+  .hero-spec{ position:absolute; top:clamp(1rem,7vw,4rem); right:0; width:clamp(120px,20vw,220px) }
+  @media(max-width:860px){ .hero-spec{ display:none } }
+
+  section{ padding:clamp(3rem,8vw,5.5rem) 0; border-top:1px solid var(--line); position:relative }
+
+  /* 섹션 라벨 — 영/한 2줄 */
+  .sec-head{ display:flex; align-items:center; gap:1.1rem; margin-bottom:2rem }
+  .sec-head .no{ display:flex; flex-direction:column; font-family:var(--mono); font-size:.72rem;
+    font-weight:600; line-height:1.45; letter-spacing:.03em; white-space:nowrap }
+  .sec-head .no .en{ color:var(--spark) }
+  .sec-head .no .ko{ color:var(--ink-mute); letter-spacing:0 }
+  .sec-head h2{ font-size:clamp(1.6rem,4.5vw,2.35rem) }
+
+  .intro{ font-size:1.1rem; line-height:1.75; color:var(--ink-soft); max-width:35rem; margin:0 0 2rem }
+  .intro b{ color:var(--ink); font-weight:700 }
+
+  .manifesto .lead{ font-size:clamp(1.35rem,3.4vw,1.9rem); font-weight:800; line-height:1.45; letter-spacing:-.02em;
+    max-width:31rem; margin:0 0 1.4rem }
+  .manifesto .body{ font-size:1.1rem; line-height:1.85; color:var(--ink-soft); max-width:33rem; margin:0 0 1.3rem }
+  .manifesto .body b{ color:var(--ink); font-weight:700 }
+  .pull{ font-size:clamp(1.5rem,4.2vw,2.25rem); font-weight:800; line-height:1.4; letter-spacing:-.02em;
+    color:var(--ink); max-width:31rem; margin:2.2rem 0 }
+  .pnk{ display:flex; flex-wrap:wrap; gap:.6rem; margin:2.2rem 0 0 }
+  .pnk span{ font-size:.95rem; font-weight:600; border:1.5px solid var(--line); padding:.5rem .9rem; border-radius:100px; color:var(--ink-soft) }
+  .pnk span b{ color:var(--on); font-weight:800 }
+  .psc-note{ margin:1.1rem 0 0; font-size:1rem; line-height:1.7; color:var(--ink-mute); max-width:33rem }
+  .psc-note b{ color:var(--spark); font-weight:700 }
+  .shift{ margin-top:2.2rem; padding:1.3rem 1.5rem; border-radius:6px; background:var(--paper-2);
+    font-size:1.15rem; line-height:1.65; font-weight:600; max-width:33rem; border-left:4px solid var(--on) }
+  .shift .a{ color:var(--ink-mute); text-decoration:line-through }
+  .shift .b{ color:var(--on); font-weight:800 }
+
+  /* 시작 — 우리 이야기 */
+  .origin p{ font-size:1.12rem; line-height:1.9; color:var(--ink-soft); max-width:33rem; margin:0 0 1.5rem }
+  .origin p b{ color:var(--ink); font-weight:700 }
+  .origin .care{ font-size:clamp(1.35rem,3.6vw,1.85rem); font-weight:800; line-height:1.5; letter-spacing:-.02em;
+    color:var(--ink); max-width:30rem; margin:2.2rem 0 }
+  .origin .join{ margin-top:2.2rem; padding:1.4rem 1.6rem; border-radius:6px;
+    background:color-mix(in srgb,var(--on) 7%,var(--paper)); border-left:4px solid var(--on);
+    font-size:1.15rem; font-weight:700; color:var(--ink); max-width:33rem; line-height:1.6 }
+
+  .offers{ display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:1rem }
+  .offer{ padding:1.7rem 1.6rem; border:1.5px solid var(--line); border-radius:8px; background:var(--paper-2);
+    transition:.2s; position:relative }
+  .offer:hover{ border-color:var(--on); transform:translateY(-3px); box-shadow:0 10px 24px var(--shadow) }
+  .offer .tag{ font-family:var(--mono); font-size:.7rem; letter-spacing:.02em; color:var(--spark); font-weight:600; display:block; margin-bottom:.9rem }
+  .offer h3{ font-size:1.3rem; margin-bottom:.6rem }
+  .offer p{ margin:0 0 1.1rem; font-size:1rem; line-height:1.68; color:var(--ink-soft) }
+  .offer .good{ font-size:.9rem; line-height:1.55; color:var(--ink-mute); border-top:1px solid var(--line); padding-top:.9rem }
+  .offer .good b{ color:var(--ink-soft); font-weight:700 }
+  .invite-line{ margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem }
+  .invite-line .q{ font-size:1.08rem; font-weight:600; color:var(--ink-soft); max-width:26rem }
+
+  .ledger{ border-top:2px solid var(--ink) }
+  .row{ display:grid; grid-template-columns:4.5rem 1fr auto; gap:1.2rem; align-items:baseline;
+    padding:1.5rem .3rem; border-bottom:1px solid var(--line); transition:background .2s }
+  .row:hover{ background:var(--paper-2) }
+  .row .rno{ font-family:var(--mono); font-size:.82rem; font-weight:600; color:var(--spark) }
+  .row .rmain h3{ font-size:1.28rem; margin-bottom:.4rem }
+  .row .rmain p{ margin:0; font-size:.98rem; line-height:1.65; color:var(--ink-soft); max-width:35rem }
+  .row .rmeta{ text-align:right; white-space:nowrap }
+  .pill{ font-family:var(--mono); font-size:.68rem; letter-spacing:.02em; font-weight:600; padding:.3rem .65rem; border-radius:100px; display:inline-block }
+  .pill.done{ background:var(--paper-3); color:var(--ink-soft) }
+  .pill.live{ background:color-mix(in srgb,var(--on) 20%,transparent); color:var(--on) }
+  .pill.soon{ color:var(--spark); border:1.5px dashed color-mix(in srgb,var(--spark) 45%,transparent) }
+  .row .yr{ display:block; font-family:var(--mono); font-size:.8rem; color:var(--ink-mute); margin-top:.5rem }
+  .row.future .rmain h3{ color:var(--ink-mute) }
+  @media(max-width:620px){
+    .row{ grid-template-columns:3.4rem 1fr }
+    .row .rmeta{ grid-column:2; text-align:left; margin-top:.5rem }
+  }
+
+  .people{ display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.8rem; margin-bottom:2.5rem }
+  .person{ display:flex; flex-direction:column; gap:.8rem }
+  .person .inst{ width:46px; height:46px; color:var(--on) }
+  .person h3{ font-size:1.2rem }
+  .person .role{ font-family:var(--mono); font-size:.74rem; letter-spacing:0; color:var(--spark); font-weight:600; margin-top:-.3rem }
+  .person p{ margin:0; font-size:.98rem; line-height:1.65; color:var(--ink-soft) }
+  .net{ padding:1.7rem 1.8rem; border:1.5px solid var(--on); border-radius:8px;
+    background:color-mix(in srgb,var(--on) 7%,var(--paper)); max-width:40rem }
+  .net p{ margin:0; color:var(--ink-soft); font-size:1.02rem; line-height:1.7 }
+
+  .pop{ display:grid; grid-template-columns:1fr auto; gap:2.5rem; align-items:center }
+  .pop .txt p{ font-size:1.08rem; line-height:1.75; color:var(--ink-soft) }
+  .pop-frames{ display:flex; gap:.7rem }
+  .frame{ width:clamp(52px,10vw,76px); aspect-ratio:3/4; border:1.5px solid var(--line); background:var(--paper-2);
+    display:flex; align-items:center; justify-content:center; border-radius:5px; color:var(--on); box-shadow:0 4px 12px var(--shadow) }
+  .frame:nth-child(2){ transform:translateY(-10px) rotate(-4deg); color:var(--spark) } .frame:nth-child(3){ transform:rotate(3deg) }
+  @media(max-width:640px){ .pop{ grid-template-columns:1fr } .pop-frames{ display:none } }
+
+  .contact-grid{ display:grid; grid-template-columns:1fr auto; gap:2.5rem; align-items:center }
+  .contact h2{ font-size:clamp(2rem,6.5vw,3.4rem); line-height:1.14; margin-bottom:1.4rem; max-width:22rem }
+  .switch-art{ width:clamp(200px,26vw,330px); height:auto; overflow:visible }
+  .switch-art .track{ fill:var(--on) }
+  .switch-art .knob{ fill:#fff }
+  .switch-art .dot{ fill:var(--spark) }
+  .switch-art .label{ fill:#fff; opacity:.9; letter-spacing:.04em }
+  .switch-art .sparks{ stroke:var(--spark) }
+  .switch-art .glow{ fill:var(--spark); opacity:.28; filter:blur(9px) }
+  .switch-art .ring{ stroke:var(--spark); fill:none; transform-box:fill-box; transform-origin:center; animation:ringpulse 2.6s ease-out infinite }
+  @keyframes ringpulse{ 0%{opacity:.55; transform:scale(1)} 80%,100%{opacity:0; transform:scale(1.55)} }
+  .switch-art .sparks{ animation:twinkle 2.2s ease-in-out infinite }
+  @keyframes twinkle{ 0%,100%{opacity:.45} 50%{opacity:1} }
+  @media(max-width:760px){ .contact-grid{ grid-template-columns:1fr } .switch-art{ width:190px; margin-top:.5rem } }
+  .big-mail{ font-size:clamp(1.4rem,4.5vw,2.2rem); font-weight:800; color:var(--on);
+    border-bottom:3px solid color-mix(in srgb,var(--on) 40%,transparent); display:inline-block; margin:.3rem 0 1.6rem; word-break:break-all }
+  .big-mail:hover{ color:var(--on-bright) }
+  .contact .note{ font-size:1.05rem; line-height:1.75; color:var(--ink-soft); max-width:31rem }
+
+  footer{ border-top:1px solid var(--line); padding:2.5rem 0 3.5rem }
+  .foot-in{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; align-items:baseline }
+  footer .fm{ font-family:var(--mono); font-size:.82rem; line-height:1.9; color:var(--ink-mute) }
+  footer .fm .on{ color:var(--on); font-weight:700 }
+
+  .specimen{ color:var(--ink-mute); opacity:0; transform:translateY(14px) rotate(-4deg);
+    transition:opacity .85s ease, transform .85s ease, color .5s }
+  .specimen.lit{ opacity:.9; transform:none; color:var(--on) }
+  .margin-spec{ position:absolute; pointer-events:none; width:clamp(70px,9vw,110px) }
+  .ms-1{ right:2%; top:22% } .ms-2{ left:1%; top:58% } .ms-3{ right:3%; top:30% }
+  @media(max-width:960px){ .margin-spec{ display:none } }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .75s ease, transform .75s ease }
+  .reveal.in{ opacity:1; transform:none }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important }
+    .specimen,.reveal{ opacity:1; transform:none }
+  }
+  :focus-visible{ outline:2.5px solid var(--on); outline-offset:3px; border-radius:3px }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#top">예감소<span class="on">:ON</span><span class="dot" aria-hidden="true"></span></a>
+    <div class="bar-right">
+      <a class="navlink" href="#invite">초청하기</a>
+      <a class="navlink" href="#archive">레이어</a>
+      <a class="navlink" href="#origin">시작</a>
+      <a class="navlink" href="#people">수집가</a>
+      <button class="switch" id="onoff" aria-pressed="true" title="감각 스위치">
+        <span class="track" aria-hidden="true"><span class="knob"></span></span>
+        <span>감각 <b id="onoff-label">ON</b></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+<div class="wrap">
+
+  <div class="hero">
+    <svg class="hero-spec specimen" viewBox="0 0 200 236" fill="none" aria-hidden="true">
+      <path d="M100 18 C60 60 40 130 70 208 C95 174 105 174 130 208 C160 130 140 60 100 18Z" stroke="currentColor" stroke-width="2.4"/>
+      <path d="M100 30 L100 202" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M100 70 L72 92 M100 70 L128 92 M100 104 L68 128 M100 104 L132 128 M100 140 L74 162 M100 140 L126 162" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="30" y="220" width="140" height="1" fill="currentColor"/>
+      <text x="30" y="233" font-family="monospace" font-size="8.5" fill="currentColor" opacity=".85">감각표본 No.001 · 나뭇잎</text>
+    </svg>
+
+    <div class="col">
+      <span class="kicker">예술감각연구소 · 예감소</span>
+      <h1>우리 모두는<br>원래 <span class="mark">예술인</span>이었다.</h1>
+      <p class="lede">거창한 자격 같은 건 필요하지 않아요.<br>우리가 하는 일은, 어느새 잠들어 버린 <b>감각을 살며시 깨우는 것</b>.<br><b class="mark-on">꺼져 있던 마음의 불을 다시 켜듯,</b><br>그 작은 스위치를 사람들과 함께 가만히 올려봅니다.</p>
+      <div class="cta-row">
+        <a class="btn btn-fill" href="mailto:yesgamso@gmail.com?subject=예감소 워크숍 초청 문의&body=안녕하세요, 예감소에 워크숍을 초청하고 싶습니다.%0D%0A%0D%0A- 함께하고 싶은 분들:%0D%0A- 인원 / 규모:%0D%0A- 원하는 시기:%0D%0A- 하고 싶은 것:%0D%0A">워크숍 초청하기 <span class="arw">↗</span></a>
+        <a class="btn btn-ghost" href="#invite">예감소가 하는 일</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="manifesto" id="why">
+    <span class="margin-spec specimen ms-1">
+      <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <rect x="32" y="20" width="56" height="80" rx="9" stroke="currentColor" stroke-width="2.4"/>
+        <circle cx="60" cy="46" r="11" fill="currentColor"/>
+        <line x1="60" y1="60" x2="60" y2="84" stroke="currentColor" stroke-width="2.4"/>
+      </svg>
+    </span>
+    <div class="sec-head"><span class="no"><span class="en">MANIFESTO</span><span class="ko">선언</span></span><h2>당신은 오늘, 몇 가지를 느꼈나요?</h2></div>
+    <div class="col">
+      <p class="lead reveal">바람 한 줄기, 스치는 냄새, 손끝에 닿은 촉감. 분명 곁을 지나갔는데, 우리는 알아채지 못한 채 하루를 흘려보내지요.</p>
+      <p class="pull reveal"><span class="mark-on">스위치를 끄고 싶어서 끈 사람은, 없어요.</span></p>
+      <p class="body reveal">다만 살아내기 위한 작은 선택들이, 어느새 감각의 스위치를 하나둘 내려놓았을 뿐이지요.</p>
+      <p class="body reveal">감기로 코가 막혀, 좋아하던 국이 맹물처럼 느껴지던 날. 오래 앉아 있다 다리가 저려, 내 다리가 내 것 같지 않던 순간. 우리는 늘 <b>사라지고 나서야</b> 그것이 거기 있었다는 걸 알아채곤 해요.</p>
+      <p class="body reveal">그런데 아프지 않아도, 우리는 매일 조금씩 꺼요. 화면을 보며 먹다가 무슨 맛이었는지 기억나지 않던 저녁. 이어폰을 끼고 걸어서 그날 바람이 어땠는지 하나도 남지 않은 길. 어떻게 왔는지 도무지 떠오르지 않는 출근길처럼요.</p>
+      <p class="body reveal"><b>살아 있다고 느끼는 순간은, 감각이 살아 있을 때예요.</b> 그래서 필요한 건 거창한 무엇이 아니라, 스위치를 다시 켜는 <b>일상의 작은 경험</b>이지요.</p>
+      <div class="pnk reveal">
+        <span><b>잠시 멈춘다</b> Pause</span>
+        <span><b>잠시 느낀다</b> Sense</span>
+        <span><b>잠시 표현해본다</b> Create</span>
+      </div>
+      <p class="psc-note reveal">표현이라고 거창할 것 없어요. 잘 해내지 않아도 괜찮아요. <b>그 과정을 즐기는 것만으로 충분하지요.</b></p>
+      <div class="shift reveal">
+        <span class="a">“그냥 좋았어요”</span> 가 <span class="b">“식은 바람, 풀 냄새, 회색 하늘이었어요”</span> 로 바뀌는 순간. 평범하던 하루가 문득 낯설어지고, 다시 살아나기 시작해요.
+      </div>
+    </div>
+  </section>
+
+  <section id="invite">
+    <div class="sec-head"><span class="no"><span class="en">INVITE</span><span class="ko">초청하기</span></span><h2>예감소와 함께할 수 있는 자리</h2></div>
+    <p class="intro reveal">완성된 결과물을 만드는 시간이 아니에요. 참여한 분들이 <b>저마다의 감각을 채집해 가는</b> 반나절이지요.<br>기업과 기관, 브랜드, 작은 모임까지 — 목적과 규모에 맞춰 프로그램을 함께 설계합니다.</p>
+    <div class="offers reveal">
+      <div class="offer">
+        <span class="tag">WORKSHOP · 워크숍</span>
+        <h3>감각 창작 워크숍</h3>
+        <p>조직이든 작은 모임이든, 잠시 멈춰 서서 각자의 감각을 채집하고 서로를 새롭게 바라보는 반나절. 인원과 목적에 맞춰 구성해 드려요.</p>
+        <p class="good"><b>이런 곳에</b> — 기업 워크숍데이 · 팀 리트릿 · 기관·학교·도서관 프로그램 · 소모임</p>
+      </div>
+      <div class="offer">
+        <span class="tag">POP-UP · 팝업 · 설치</span>
+        <h3>감각 팝업 · 설치</h3>
+        <p>스쳐 가는 사람의 감각을 살며시 붙잡는 참여형 부스와 설치. 공간의 결에 맞춰, 머리가 아니라 몸으로 느끼는 경험을 짓습니다.</p>
+        <p class="good"><b>이런 곳에</b> — 팝업스토어 · 전시 · 페어 · 지역 축제 · 브랜드 캠페인</p>
+      </div>
+      <div class="offer">
+        <span class="tag">COLLABORATION · 협업</span>
+        <h3>콜라보레이션</h3>
+        <p>한 번의 행사로 끝나지 않는 협업. 프로그램 공동 기획부터 감각을 담은 굿즈·콘텐츠, 리서치까지 길게 함께 만들어 갑니다.</p>
+        <p class="good"><b>이런 곳에</b> — 브랜드 협업 · 프로그램 공동기획 · 굿즈·콘텐츠 개발 · 리서치 · 리빙랩</p>
+      </div>
+    </div>
+    <div class="invite-line reveal">
+      <span class="q">거창한 기획서는 없어도 괜찮아요. ‘이런 걸 함께하고 싶어요’ 한 줄이면 충분히 시작돼요.</span>
+      <a class="btn btn-fill" href="mailto:yesgamso@gmail.com?subject=예감소 워크숍 초청 문의&body=안녕하세요, 예감소에 워크숍을 초청하고 싶습니다.%0D%0A%0D%0A- 함께하고 싶은 분들:%0D%0A- 인원 / 규모:%0D%0A- 원하는 시기:%0D%0A- 하고 싶은 것:%0D%0A">초청 문의하기 <span class="arw">↗</span></a>
+    </div>
+  </section>
+
+  <section id="archive">
+    <span class="margin-spec specimen ms-2">
+      <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <path d="M18 62 Q34 30 50 62 T82 62" stroke="currentColor" stroke-width="2.4" fill="none"/>
+        <path d="M28 78 Q44 46 60 78 T92 78" stroke="currentColor" stroke-width="1.6" fill="none" opacity=".7"/>
+      </svg>
+    </span>
+    <div class="sec-head"><span class="no"><span class="en">LAYERS</span><span class="ko">레이어</span></span><h2>겹겹이 쌓여가는 프로젝트</h2></div>
+    <p class="intro reveal">예감소가 지나온 자리들이에요. 프로젝트는 끝나도 사라지지 않고, 한 겹씩 포개어져 지금의 예감소가 되지요.</p>
+    <div class="ledger reveal">
+      <div class="row future">
+        <span class="rno">No.03</span>
+        <div class="rmain">
+          <h3>다음 겹을 기다리는 자리</h3>
+          <p>당신과 함께할 워크숍이, 여기 다음 겹이 될지도 몰라요.</p>
+        </div>
+        <div class="rmeta"><span class="pill soon">모집 중</span><span class="yr">2026 —</span></div>
+      </div>
+      <div class="row">
+        <span class="rno">No.02</span>
+        <div class="rmain">
+          <h3>실·실·실 「철을 느끼다」</h3>
+          <p>하남 3040 시민과 함께하는 감각 리빙랩. 계절(철)을 감각하고, 걷고, 나의 철을 선언하는 세 번의 만남. 실학박물관 작은 실험 지원사업에 선정되었어요.</p>
+        </div>
+        <div class="rmeta"><span class="pill live">진행 중</span><span class="yr">2026</span></div>
+      </div>
+      <div class="row">
+        <span class="rno">No.01</span>
+        <div class="rmain">
+          <h3>하남탐미 「나도 예술가!」</h3>
+          <p>성인 돌 드로잉 리서치 10인과 키즈 감각 워크숍. “나는 미술 못해요” 하던 마음이 몰입과 작은 성취로 바뀌던 자리였어요. 예감소가 처음 뭉친 프로젝트입니다.</p>
+        </div>
+        <div class="rmeta"><span class="pill done">완료</span><span class="yr">2025</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="origin" id="origin">
+    <span class="margin-spec specimen ms-3">
+      <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <path d="M60 96 C30 74 20 54 30 40 C40 26 56 30 60 44 C64 30 80 26 90 40 C100 54 90 74 60 96Z" stroke="currentColor" stroke-width="2.4"/>
+      </svg>
+    </span>
+    <div class="sec-head"><span class="no"><span class="en">ORIGIN</span><span class="ko">시작</span></span><h2>어쩌다 우리는 뭉쳤나</h2></div>
+    <div class="col">
+      <p class="reveal">거창한 예술을 하려던 게 아니었어요. 행복이란 게 대단한 일에서 오는 게 아니라 그저 <b>일상에서 느끼며 살아내는 것</b>이면 좋겠다는 마음. 예감소는 거기서 시작됐어요.</p>
+      <p class="reveal">우리도 각자의 일을 하고, 누군가의 엄마이자 아빠로 하루를 건너요. 주어진 일들을 그저 살아내느라. 육아가 적성이 아니어도, 우리에게 온 아이들을 키워내느라. 그렇게 우리 모두는 —</p>
+      <p class="care reveal"><span class="mark-on">살아내느라, 참 수고가 많았어요.</span></p>
+      <p class="reveal">그런 나 자신을 토닥인다는 건 무엇일까. 그 물음을 오래 품고 있던 사람들이 같은 자리에 모였습니다. <b>겪어봤기에 압니다.</b> 필요한 건 거창한 위로가 아니라, 오늘 하루에 스위치 하나를 켜는 일이라는 걸.</p>
+      <p class="join reveal">그래서 예감소가 하는 일은 결국 하나예요.<br>당신의 하루에 감각의 스위치를 하나, 살며시 켜 두는 것.</p>
+    </div>
+  </section>
+
+  <section id="people">
+    <div class="sec-head"><span class="no"><span class="en">COLLECTORS</span><span class="ko">수집가</span></span><h2>서로 다른 감각을 든 사람들</h2></div>
+    <div class="people reveal">
+      <div class="person">
+        <svg class="inst" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M4 24 C12 12 36 12 44 24 C36 36 12 36 4 24Z" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="24" r="7" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="24" r="2.6" fill="currentColor"/></svg>
+        <div><h3>이한나</h3><div class="role">시각 · 창작환경</div></div>
+        <p>in:JOYFULL. 공간과 재료로, 사람이 스스로 발견하도록 곁의 환경을 짓습니다.</p>
+      </div>
+      <div class="person">
+        <svg class="inst" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 24 L14 24 L18 12 L24 36 L30 18 L34 24 L40 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3>김성겸</h3><div class="role">몸 · 소리 · 연극</div></div>
+        <p>플레이업. 말과 몸짓으로, 감각을 리듬과 이야기로 옮깁니다.</p>
+      </div>
+      <div class="person">
+        <svg class="inst" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="2.4"/><path d="M20 20 C30 30 30 30 40 40" stroke="currentColor" stroke-width="2.4"/><path d="M38 36 L42 40 L38 44" stroke="currentColor" stroke-width="2.4" fill="none"/></svg>
+        <div><h3>박희진</h3><div class="role">색 · 패턴 · 텍스타일</div></div>
+        <p>H.Hee. 감각을 색과 패턴으로, 손에 남는 사물로 이어 줍니다.</p>
+      </div>
+    </div>
+    <div class="net reveal">
+      <p>시각과 공연, 디자인. 서로 다른 언어를 가진 세 사람이 저마다 홀로 서서, 또 함께 걸어가는 작은 협업 모임이에요.</p>
+    </div>
+  </section>
+
+  <section id="popfolio">
+    <div class="sec-head"><span class="no"><span class="en">LINKED</span><span class="ko">연계</span></span><h2>작품은 사라지지 않아요</h2></div>
+    <div class="pop reveal">
+      <div class="txt col">
+        <p>워크숍에서 태어난 작품과 기록은 <b style="color:var(--ink);font-weight:700">팝폴리오</b>에서 온라인으로 이어져요. 부모가 아이의 그림을 가만히 걸어두고, 참여자가 자기 감각의 표본을 언제든 다시 꺼내볼 수 있도록요. <span style="color:var(--ink-mute)">(연계 준비 중)</span></p>
+      </div>
+      <div class="pop-frames" aria-hidden="true">
+        <div class="frame"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 16 L9 9 L13 14 L16 10 L20 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="6" r="1.7" fill="currentColor"/></svg></div>
+        <div class="frame"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2.2"/></svg></div>
+        <div class="frame"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 18 Q12 4 18 18" stroke="currentColor" stroke-width="2.2" fill="none"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="sec-head"><span class="no"><span class="en">CONTACT</span><span class="ko">연락</span></span></div>
+    <div class="contact-grid">
+      <div class="contact-main">
+        <h2>감각의 스위치를<br>켤 시간이라면,<br>예감소와 함께해요.</h2>
+        <a class="big-mail" href="mailto:yesgamso@gmail.com?subject=예감소 문의">yesgamso@gmail.com</a>
+        <p class="note">창작 워크숍, 브랜드 협업, 시민 프로그램 — 무엇이든 좋아요. ‘이런 걸 함께하고 싶어요’ 한 줄이면, 예감소가 반갑게 답합니다.</p>
+      </div>
+      <svg class="switch-art" viewBox="0 0 260 176" fill="none" aria-hidden="true">
+        <g class="sparks" stroke-linecap="round" stroke-width="3.5">
+          <line x1="196" y1="34" x2="206" y2="18"/>
+          <line x1="230" y1="58" x2="250" y2="50"/>
+          <line x1="234" y1="96" x2="256" y2="98"/>
+          <line x1="222" y1="132" x2="238" y2="146"/>
+        </g>
+        <rect class="track" x="22" y="52" width="216" height="76" rx="38"/>
+        <text class="label" x="58" y="98" font-family="monospace" font-size="30" font-weight="700">ON</text>
+        <circle class="glow" cx="200" cy="90" r="30"/>
+        <circle class="knob" cx="200" cy="90" r="31"/>
+        <circle class="dot" cx="200" cy="90" r="10"/>
+        <circle class="ring" cx="200" cy="90" r="31" stroke-width="2.5"/>
+      </svg>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="fm">예술감각연구소 (예감소)<br>경기 하남 · yesgamso@gmail.com</div>
+    <div class="fm" style="text-align:right"><span class="on">예감소 : ON</span><br>우리 모두는 원래 예술인이었다</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var body=document.body;
+  var btn=document.getElementById('onoff'), label=document.getElementById('onoff-label');
+  btn.addEventListener('click',function(){
+    var off=body.classList.toggle('is-off');
+    btn.setAttribute('aria-pressed', String(!off));
+    label.textContent = off ? 'OFF' : 'ON';
+  });
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in','lit'); io.unobserve(e.target); }
+    });
+  },{threshold:.14, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal, .specimen').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var id=a.getAttribute('href'); if(id.length<2) return;
+      var t=document.querySelector(id); if(!t) return;
+      ev.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
