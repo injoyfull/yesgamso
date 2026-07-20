@@ -38,7 +38,8 @@
   ↓
 살아 있다고 느끼는 건 감각이 살아 있을 때
   ↓
-그래서 필요한 건 거창한 게 아니라 작은 경험 → P·N·K (멈춤·이름·붙잡음)
+그래서 필요한 건 거창한 게 아니라 작은 경험 → PSC (잠시 멈춘다·느낀다·표현해본다)
+  ※ PSC는 in:JOYFULL의 원래 철학. 예감소와 같은 언어를 쓰도록 정렬한 것이니 바꾸지 말 것
   ↓
 우리도 살아내느라 수고했고, 겪어봤기에 안다 → 위로가 되고 싶어 모였다
   ↓
@@ -51,13 +52,29 @@
 
 | 파일 | 용도 |
 |---|---|
-| `index.html` | **실제 배포용 완전한 문서**. 자체 도메인에 그대로 올릴 수 있음. `<head>`에 SVG 파비콘(스위치 마크) 내장 |
-| (스크래치패드) `yegamso_purple.html` | 아티팩트 발행용 사본. `<!doctype>/<html>/<head>/<body>` 없이 `<title>+<style>+본문+<script>`만 |
+| `index.html` | **실제 배포되는 문서**. 단일 파일 자체 완결형. `<head>`에 SVG 파비콘(스위치 마크) 내장 |
+| `CLAUDE.md` / `PLAN.md` / `LOG.md` | 작업 가이드 / 계획 / 결정 기록 — **모든 작업 시 함께 갱신할 것** |
+| (스크래치패드) `yegamso_purple.html` | 아티팩트 미리보기용 사본. `<!doctype>/<html>/<head>/<body>` 없이 `<title>+<style>+본문+<script>`만 |
 
-**중요**: 두 파일은 **내용이 동일해야 함**. 한쪽만 고치면 어긋남.
+**중요**: `index.html`과 아티팩트 사본은 **내용이 동일해야 함**. 한쪽만 고치면 어긋남.
 
-**라이브 아티팩트**: https://claude.ai/code/artifact/db2fa349-65bc-4c59-9ee9-22521acd2510
-→ 같은 파일 경로로 재발행하면 URL 유지됨.
+## 배포
+
+| | |
+|---|---|
+| **GitHub** | `injoyfull/yesgamso` (공개), 브랜치 `master` |
+| **Vercel** | `in-joyfull/yesgamso` — GitHub 연동됨 |
+| **공개 주소** | **https://yesgamso.vercel.app** |
+| 도메인 | 미구매. 추후 Vercel에서 `yesgamso` 구매 예정 (결제는 본인이 직접) |
+
+```bash
+git add -A && git commit && git push origin master   # 푸시하면 Vercel 자동 재배포
+vercel deploy --prod --yes                            # 즉시 배포가 필요할 때
+```
+
+`.gitignore`가 `.env*`(Vercel OIDC 토큰)와 `.vercel`을 차단함 — 지울 것.
+
+**아티팩트 미리보기**: https://claude.ai/code/artifact/db2fa349-65bc-4c59-9ee9-22521acd2510
 
 ---
 
