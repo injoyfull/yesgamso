@@ -129,6 +129,11 @@
   .hero-spec{ position:absolute; top:clamp(1rem,7vw,4rem); right:0; width:clamp(120px,20vw,220px) }
   @media(max-width:860px){ .hero-spec{ display:none } }
 
+  /* 랜딩 — 꺼진 채로 들어와, 스스로 켜진다 */
+  .hero .col{ transition:opacity .7s ease, transform .7s ease }
+  body.booting .hero .col{ opacity:0; transform:translateY(12px) }
+  body.booting .hero-spec{ opacity:0 }
+
   section{ padding:clamp(3rem,8vw,5.5rem) 0; border-top:1px solid var(--line); position:relative }
 
   /* 섹션 라벨 — 영/한 2줄 */
@@ -259,6 +264,8 @@
 </style>
 </head>
 <body>
+<script>/* 첫 페인트 전에 '꺼진 상태'를 입힌다. JS가 없으면 그냥 켜진 채로 보인다 */
+(function(){try{var m=window.matchMedia;if(!(m&&m('(prefers-reduced-motion: reduce)').matches)){document.body.classList.add('is-off','booting');}}catch(e){}})();</script>
 
 <header class="bar">
   <div class="bar-in">
@@ -485,10 +492,27 @@
 (function(){
   var body=document.body;
   var btn=document.getElementById('onoff'), label=document.getElementById('onoff-label');
-  btn.addEventListener('click',function(){
-    var off=body.classList.toggle('is-off');
+  var bootTimer=null;
+
+  function render(){
+    var off=body.classList.contains('is-off');
     btn.setAttribute('aria-pressed', String(!off));
     label.textContent = off ? 'OFF' : 'ON';
+  }
+  render();
+
+  // 0.6초 뒤, 스위치가 스스로 켜진다
+  if(body.classList.contains('booting')){
+    bootTimer=setTimeout(function(){
+      body.classList.remove('is-off','booting');
+      render();
+    }, 600);
+  }
+
+  btn.addEventListener('click',function(){
+    if(bootTimer){ clearTimeout(bootTimer); bootTimer=null; body.classList.remove('booting'); }
+    body.classList.toggle('is-off');
+    render();
   });
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
