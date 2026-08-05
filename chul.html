@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>철을 느끼다 — 예감소가 준비한 초대</title>
+<meta name="description" content="하남 3040에게 보내는 예감소의 초대. 세 번의 만남 동안 계절(철)을 감각하고, 걷고, 나의 철(哲)을 선언합니다.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2.5' y='9' width='27' height='14' rx='7' fill='%236C43E0'/><circle cx='22' cy='16' r='5.4' fill='white'/><circle cx='22' cy='16' r='2' fill='%2310B84E'/></svg>">
+<style>
+  :root{
+    --paper:#FAF9F6; --paper-2:#F1EFF6; --paper-3:#E8E4F0;
+    --ink:#1A1622; --ink-soft:#514B5E; --ink-mute:#8A8496;
+    --line:#E6E2EF;
+    --on:#6C43E0; --on-bright:#7E58F5;
+    --spark:#10B84E;
+    --shadow:rgba(26,22,34,.11);
+    --sans:'Apple SD Gothic Neo','Pretendard','Pretendard Variable',-apple-system,system-ui,'Malgun Gothic','Segoe UI',sans-serif;
+    --mono:'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#060608; --paper-2:#100E15; --paper-3:#1A1722;
+      --ink:#F1EEF6; --ink-soft:#BAB4C6; --ink-mute:#837D90;
+      --line:#242030;
+      --on:#9B7BFF; --on-bright:#B49BFF;
+      --spark:#2FDA69;
+      --shadow:rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#FAF9F6; --paper-2:#F1EFF6; --paper-3:#E8E4F0;
+    --ink:#1A1622; --ink-soft:#514B5E; --ink-mute:#8A8496;
+    --line:#E6E2EF; --on:#6C43E0; --on-bright:#7E58F5; --spark:#10B84E; --shadow:rgba(26,22,34,.11);
+  }
+  :root[data-theme="dark"]{
+    --paper:#060608; --paper-2:#100E15; --paper-3:#1A1722;
+    --ink:#F1EEF6; --ink-soft:#BAB4C6; --ink-mute:#837D90;
+    --line:#242030; --on:#9B7BFF; --on-bright:#B49BFF; --spark:#2FDA69; --shadow:rgba(0,0,0,.5);
+  }
+
+  *{ box-sizing:border-box }
+  html{ -webkit-text-size-adjust:100% }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:18px; line-height:1.8; letter-spacing:-.005em;
+    word-break:keep-all; overflow-wrap:break-word; text-wrap:pretty;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  a{ color:inherit; text-decoration:none }
+  h1,h2,h3{ margin:0; font-weight:800; line-height:1.18; letter-spacing:-.025em; text-wrap:balance }
+
+  header.bar{ position:sticky; top:0; z-index:20; background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line) }
+  .bar-in{ max-width:46rem; margin:0 auto; padding:.75rem clamp(1.25rem,5vw,2.5rem);
+    display:flex; align-items:center; justify-content:space-between; gap:1rem }
+  .brand{ font-family:var(--mono); font-weight:700; font-size:1rem }
+  .brand .on{ color:var(--on) }
+  .home{ font-size:.88rem; font-weight:600; color:var(--ink-soft) }
+  .home:hover{ color:var(--on) }
+
+  .wrap{ max-width:46rem; margin:0 auto; padding:0 clamp(1.25rem,5vw,2.5rem) }
+
+  .hero{ padding:clamp(3.5rem,10vw,6.5rem) 0 clamp(2.5rem,6vw,4rem) }
+  .kicker{ font-family:var(--mono); font-size:.74rem; letter-spacing:.03em; color:var(--spark);
+    font-weight:600; text-transform:uppercase; display:inline-flex; align-items:center; gap:.6rem; margin-bottom:1.4rem }
+  .kicker::before{ content:""; width:1.8rem; height:1px; background:var(--ink-mute) }
+  .hero h1{ font-size:clamp(2.5rem,9vw,4.4rem); margin-bottom:.7rem }
+  .hero .sub{ font-size:clamp(1.05rem,2.6vw,1.25rem); color:var(--ink-mute); font-weight:600; margin:0 0 2rem }
+  .hero .invite{ font-size:1.12rem; line-height:1.85; color:var(--ink-soft); margin:0 }
+  .hero .invite b{ color:var(--ink); font-weight:700 }
+
+  .pull{ margin:clamp(2.5rem,7vw,4rem) 0; padding:1.4rem 1.6rem; border-left:4px solid var(--on);
+    background:var(--paper-2); border-radius:6px;
+    font-size:clamp(1.2rem,3.4vw,1.6rem); font-weight:800; line-height:1.5; letter-spacing:-.02em }
+
+  section{ padding:clamp(2.2rem,6vw,3.5rem) 0; border-top:1px solid var(--line) }
+  .sec-label{ display:flex; flex-direction:column; font-family:var(--mono); font-size:.72rem;
+    font-weight:600; line-height:1.45; letter-spacing:.03em; margin-bottom:1.6rem }
+  .sec-label .en{ color:var(--spark) } .sec-label .ko{ color:var(--ink-mute); letter-spacing:0 }
+
+  /* 세 번의 만남 */
+  .meet{ position:relative; padding:0 0 2rem 2.1rem; border-left:2px solid var(--line) }
+  .meet:last-of-type{ padding-bottom:.4rem }
+  .meet::before{ content:""; position:absolute; left:-9px; top:.42em; width:16px; height:16px;
+    border-radius:50%; background:var(--paper); border:2.5px solid var(--on) }
+  .meet.walk::before{ border-color:var(--spark) }
+  .meet .no{ font-family:var(--mono); font-size:.72rem; font-weight:600; color:var(--on); letter-spacing:.02em }
+  .meet.walk .no{ color:var(--spark) }
+  .meet h3{ font-size:1.35rem; margin:.25rem 0 .15rem }
+  .meet .where{ font-size:.86rem; color:var(--ink-mute); margin-bottom:.6rem }
+  .meet p{ margin:0 0 .7rem; font-size:1rem; line-height:1.75; color:var(--ink-soft) }
+  .meet .q{ font-size:.98rem; font-weight:700; color:var(--ink) }
+  .meet .q::before{ content:"— "; color:var(--on) }
+
+  /* 가져가는 것 */
+  .keeps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(11.5rem,1fr)); gap:.8rem }
+  .keep{ padding:1.2rem 1.3rem; border:1.5px solid var(--line); border-radius:8px; background:var(--paper-2) }
+  .keep b{ display:block; font-size:1.02rem; margin-bottom:.35rem }
+  .keep span{ font-size:.9rem; line-height:1.6; color:var(--ink-soft) }
+
+  /* 안내 */
+  .facts{ border-top:2px solid var(--ink) }
+  .fact{ display:grid; grid-template-columns:7rem 1fr; gap:1rem; padding:.95rem .2rem;
+    border-bottom:1px solid var(--line); font-size:1rem }
+  .fact dt{ font-weight:700; color:var(--ink-mute); margin:0 }
+  .fact dd{ margin:0; color:var(--ink) }
+  .fact dd small{ display:block; color:var(--ink-mute); font-size:.88rem; margin-top:.15rem }
+  @media(max-width:480px){ .fact{ grid-template-columns:5.4rem 1fr } }
+
+  /* 신청 */
+  .cta{ text-align:left; padding-bottom:clamp(3rem,8vw,5rem) }
+  .cta h2{ font-size:clamp(1.7rem,5.5vw,2.5rem); margin-bottom:1rem }
+  .cta p{ font-size:1.05rem; line-height:1.8; color:var(--ink-soft); max-width:30rem; margin:0 0 1.8rem }
+  .btn{ display:inline-flex; align-items:center; gap:.5rem; font-size:1.02rem; font-weight:700;
+    padding:.95rem 1.7rem; border-radius:4px; background:var(--on); color:#fff; transition:.18s }
+  .btn:hover{ background:var(--on-bright); transform:translateY(-2px) }
+  .btn .arw{ transition:transform .2s } .btn:hover .arw{ transform:translate(3px,-3px) }
+  .cta .tiny{ font-size:.86rem; color:var(--ink-mute); margin-top:1.1rem }
+
+  footer{ border-top:1px solid var(--line); padding:2rem 0 3rem }
+  footer .fm{ font-family:var(--mono); font-size:.8rem; line-height:1.9; color:var(--ink-mute) }
+  footer .fm .on{ color:var(--on); font-weight:700 }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease }
+  .reveal.in{ opacity:1; transform:none }
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important }
+    .reveal{ opacity:1; transform:none }
+  }
+  :focus-visible{ outline:2.5px solid var(--on); outline-offset:3px; border-radius:3px }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="./">예감소<span class="on">:ON</span></a>
+    <a class="home" href="./">홈으로 →</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="kicker">Invitation · 예감소가 준비한 초대</span>
+    <h1>철을 느끼다</h1>
+    <p class="sub">감각으로 발견하는 나의 철(哲)</p>
+    <p class="invite">계절이 바뀌는 걸, 올해는 몇 번이나 느끼셨나요?<br>
+    하남에서 살아가는 3040에게 보내는 초대예요. <b>세 번의 만남</b> 동안 계절(철)을 감각하고, 걷고, 마지막엔 나의 철(哲)을 선언합니다. 잘하는 사람이 아니라, <b>느끼고 싶은 사람</b>을 기다려요.</p>
+  </div>
+
+  <p class="pull reveal">“지금 나는 어떤 철을 살아가고 있는가?”</p>
+
+  <section>
+    <span class="sec-label"><span class="en">THREE MEETINGS</span><span class="ko">세 번의 만남</span></span>
+
+    <div class="meet reveal">
+      <span class="no">1차 · 인조이풀</span>
+      <h3>철을 감각하다</h3>
+      <div class="where">실내 · 감각 스테이션</div>
+      <p>계절의 소리·색·향을 만나며 잠든 감각을 살며시 깨워요. 수집 노트와 수집통을 받아, 나의 기록을 시작합니다.</p>
+      <p class="q">나는 무엇을 느끼며 살아가고 있는가</p>
+    </div>
+
+    <div class="meet walk reveal">
+      <span class="no">2차 · 하남 야외</span>
+      <h3>철을 걷다</h3>
+      <div class="where">야외 · 감각 산책</div>
+      <p>천천히 걸으며 계절을 채집해요. 소리를 줍고, 색을 발견하고, 몸으로 계절을 표현해봅니다. 늘 지나치던 동네가 재료가 되지요.</p>
+      <p class="q">지금 나는 어떤 철을 지나고 있는가</p>
+    </div>
+
+    <div class="meet reveal">
+      <span class="no">3차 · 지역 카페</span>
+      <h3>나의 철을 선언하다</h3>
+      <div class="where">팝업 · 네 개의 감각 스테이션 &amp; 오픈 스튜디오</div>
+      <p>아트·움직임·연극스토리·손바느질 스테이션을 자유롭게 오가며, 그간 모은 기록을 나만의 작품으로 옮겨요. 나의 색과 패턴을 골라 미니 쿠션에 담고, 나의 철을 한 문장으로 선언합니다.</p>
+      <p class="q">나는 어떤 철을 살아가기로 했는가</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-label"><span class="en">TO KEEP</span><span class="ko">손에 남는 것</span></span>
+    <div class="keeps reveal">
+      <div class="keep"><b>수집 노트 &amp; 수집통</b><span>세 번의 만남을 관통하는 나의 감각 기록</span></div>
+      <div class="keep"><b>미니 쿠션</b><span>내가 고른 색과 패턴. 집에서 한 땀씩 완성하는, 일상으로 가져가는 감각</span></div>
+      <div class="keep"><b>『철, 나를 수집하다』</b><span>참여자들의 기록이 모인 공동 아카이브</span></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-label"><span class="en">DETAILS</span><span class="ko">안내</span></span>
+    <dl class="facts reveal">
+      <div class="fact"><dt>누구와</dt><dd>하남에서 살아가는 3040 <small>직장인, 양육자, 그 사이 어딘가의 당신</small></dd></div>
+      <div class="fact"><dt>몇 명이</dt><dd>10명 <small>깊게 만나기 위해, 소수로 진행해요</small></dd></div>
+      <div class="fact"><dt>언제</dt><dd>2026년 9월 – 10월, 세 번의 만남</dd></div>
+      <div class="fact"><dt>참가비</dt><dd>없음 <small>실학박물관 작은 실험 지원사업 〈실·실·실 프로젝트〉 선정</small></dd></div>
+    </dl>
+  </section>
+
+  <section class="cta">
+    <h2>함께 걸어볼까요?</h2>
+    <p>준비물은 없어요. 잘 그리거나 잘 만들 필요도 없고요. 한 줄이면 충분해요 — 요즘 당신의 철이 어떤지.</p>
+    <a class="btn" href="mailto:yesgamso@gmail.com?subject=[철을 느끼다] 참여 신청&body=안녕하세요, 「철을 느끼다」에 함께하고 싶어요.%0D%0A%0D%0A- 이름:%0D%0A- 연락처:%0D%0A- 요즘 나의 철은 어떤가요? (한 줄):%0D%0A">참여 신청하기 <span class="arw">↗</span></a>
+    <p class="tiny">신청이 몰리면 순서대로 안내드려요 · 문의 yesgamso@gmail.com</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem">
+    <div class="fm">예술감각연구소 (예감소)<br>경기 하남 · yesgamso@gmail.com</div>
+    <div class="fm" style="text-align:right"><span class="on">예감소 : ON</span><br>우리 모두는 원래 예술인이었다</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

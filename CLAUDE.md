@@ -54,7 +54,9 @@
 
 | 파일 | 용도 |
 |---|---|
-| `index.html` | **실제 배포되는 문서**. 단일 파일 자체 완결형. `<head>`에 SVG 파비콘(스위치 마크) 내장 |
+| `index.html` | **홈**. 단일 파일 자체 완결형. `<head>`에 SVG 파비콘(스위치 마크) 내장 |
+| `chul.html` | **「철을 느끼다」 초대장** — 실·실·실 참여자 모집 페이지. `/chul`로 접속 (vercel.json cleanUrls). 히어로 CTA와 LAYERS No.02가 여기로 연결 |
+| `vercel.json` | `cleanUrls: true` — `.html` 없는 주소 |
 | `CLAUDE.md` / `PLAN.md` / `LOG.md` | 작업 가이드 / 계획 / 결정 기록 — **모든 작업 시 함께 갱신할 것** |
 | (스크래치패드) `yegamso_purple.html` | 아티팩트 미리보기용 사본. `<!doctype>/<html>/<head>/<body>` 없이 `<title>+<style>+본문+<script>`만 |
 
