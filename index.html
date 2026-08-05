@@ -181,6 +181,17 @@
   .offer p{ margin:0 0 1.1rem; font-size:1rem; line-height:1.68; color:var(--ink-soft) }
   .offer .good{ font-size:.9rem; line-height:1.55; color:var(--ink-mute); border-top:1px solid var(--line); padding-top:.9rem }
   .offer .good b{ color:var(--ink-soft); font-weight:700 }
+  .open-now{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1.1rem; margin-top:1.6rem;
+    padding:1.1rem 1.4rem; border-radius:8px; border:1.5px solid color-mix(in srgb,var(--spark) 45%,transparent);
+    background:color-mix(in srgb,var(--spark) 8%,var(--paper)); transition:.2s }
+  .open-now:hover{ border-color:var(--spark); transform:translateY(-2px); box-shadow:0 10px 24px var(--shadow) }
+  .open-now .badge{ font-family:var(--mono); font-size:.68rem; font-weight:600; letter-spacing:.02em;
+    color:var(--spark); border:1.5px solid color-mix(in srgb,var(--spark) 45%,transparent);
+    padding:.24rem .6rem; border-radius:100px; white-space:nowrap }
+  .open-now .txt{ flex:1 1 18rem; font-size:1rem; line-height:1.65; color:var(--ink-soft) }
+  .open-now .txt b{ color:var(--ink); font-weight:700 }
+  .open-now .go{ font-size:.95rem; font-weight:700; color:var(--spark); white-space:nowrap }
+
   .invite-line{ margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem }
   .invite-line .q{ font-size:1.08rem; font-weight:600; color:var(--ink-soft); max-width:26rem }
 
@@ -357,6 +368,11 @@
         <p class="good"><b>이런 곳에</b> — 브랜드 협업 · 프로그램 공동기획 · 굿즈·콘텐츠 개발 · 리서치 · 리빙랩</p>
       </div>
     </div>
+    <a class="open-now reveal" href="chul.html">
+      <span class="badge">지금 열려 있는 초대</span>
+      <span class="txt"><b>철을 느끼다</b> — 하남 3040과 함께하는 감각 리빙랩. 10월 세 번의 토요일, 그리고 11월 전시.</span>
+      <span class="go">초대장 보기 →</span>
+    </a>
     <div class="invite-line reveal">
       <span class="q">거창한 기획서는 없어도 괜찮아요. ‘이런 걸 함께하고 싶어요’ 한 줄이면 충분히 시작돼요.</span>
       <a class="btn btn-fill" href="mailto:yesgamso@gmail.com?subject=예감소 워크숍 초청 문의&body=안녕하세요, 예감소에 워크숍을 초청하고 싶습니다.%0D%0A%0D%0A- 함께하고 싶은 분들:%0D%0A- 인원 / 규모:%0D%0A- 원하는 시기:%0D%0A- 하고 싶은 것:%0D%0A">초청 문의하기 <span class="arw">↗</span></a>
