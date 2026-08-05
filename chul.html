@@ -84,13 +84,18 @@
   .meet::before{ content:""; position:absolute; left:-9px; top:.42em; width:16px; height:16px;
     border-radius:50%; background:var(--paper); border:2.5px solid var(--on) }
   .meet.walk::before{ border-color:var(--spark) }
-  .meet.show::before{ background:var(--spark); border-color:var(--spark) }
+  .meet.declare::before{ background:var(--on); border-color:var(--on);
+    box-shadow:0 0 0 4px color-mix(in srgb,var(--on) 18%,transparent) }
+  .meet.show::before{ background:var(--spark); border-color:var(--spark);
+    box-shadow:0 0 0 4px color-mix(in srgb,var(--spark) 18%,transparent) }
   .meet .no{ font-family:var(--mono); font-size:.72rem; font-weight:600; color:var(--on); letter-spacing:.02em }
   .meet.walk .no, .meet.show .no{ color:var(--spark) }
   .meet h3{ font-size:1.35rem; margin:.25rem 0 .3rem }
   .meet .when{ display:inline-block; font-family:var(--mono); font-size:.82rem; font-weight:600;
     color:var(--ink); background:var(--paper-3); padding:.28rem .6rem; border-radius:100px; margin-bottom:.75rem }
+  .meet.declare .when{ background:color-mix(in srgb,var(--on) 16%,transparent); color:var(--on) }
   .meet.show .when{ background:color-mix(in srgb,var(--spark) 18%,transparent); color:var(--spark) }
+  .meet.declare h3, .meet.show h3{ color:var(--ink) }
   .meet p{ margin:0 0 .7rem; font-size:1rem; line-height:1.75; color:var(--ink-soft) }
   .meet .q{ font-size:.98rem; font-weight:700; color:var(--ink) }
   .meet .q::before{ content:"— "; color:var(--on) }
@@ -173,7 +178,7 @@
       <p class="q">지금 나는 어떤 철을 지나고 있는가</p>
     </div>
 
-    <div class="meet reveal">
+    <div class="meet declare reveal">
       <span class="no">3차 · 지역 카페</span>
       <h3>나의 철을 선언하다</h3>
       <div class="when">10월 17일 (토) 오후 2–4시</div>
@@ -203,7 +208,7 @@
     <span class="sec-label"><span class="en">DETAILS</span><span class="ko">안내</span></span>
     <dl class="facts reveal">
       <div class="fact"><dt>누구와</dt><dd>하남에서 살아가는 3040 <small>직장인, 양육자, 그 사이 어딘가의 당신</small></dd></div>
-      <div class="fact"><dt>몇 명이</dt><dd>10명 <small>깊게 만나기 위해, 소수로 진행해요</small></dd></div>
+      <div class="fact"><dt>몇 명이</dt><dd>최대 10명 <small>깊게 만나기 위해, 소수로 진행해요</small></dd></div>
       <div class="fact"><dt>워크숍</dt><dd>10월 3 · 10 · 17일 (토) 오후 2–4시 <small>매주 토요일, 세 번의 만남</small></dd></div>
       <div class="fact"><dt>전시</dt><dd>11월 6일 (금) – 7일 (토) <small>우리가 모은 것들을 함께 펼치는 자리</small></dd></div>
       <div class="fact"><dt>참가비</dt><dd>없음 <small>실학박물관 작은 실험 지원사업 〈실·실·실 프로젝트〉 선정</small></dd></div>
