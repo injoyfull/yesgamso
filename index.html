@@ -255,7 +255,7 @@
   /* 수집가 */
   .people{ display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.8rem; margin-bottom:2.5rem }
   .person{ display:flex; flex-direction:column; gap:.5rem }
-  .person .face{ width:80px; height:94px; margin-bottom:-.35rem }
+  .person .face{ width:80px; height:94px; margin-bottom:.15rem }
   .person h3{ font-size:1.08rem }
   .person .role{ font-size:.85rem; font-weight:700; margin-top:.05rem; line-height:1.35 }
   .person:nth-child(1) .role{ color:var(--c-hear) }
@@ -321,6 +321,42 @@
     .hero-tree .sprout{ opacity:1; transform:none }
   }
 
+
+  /* 입구 — 스위치를 올려야 열린다 */
+  .gate{ display:none }
+  body.gated{ overflow:hidden }
+  body.gated .gate{
+    display:grid; place-items:center; position:fixed; inset:0; z-index:100;
+    background:#050505; padding:2rem; text-align:center;
+    transition:opacity .75s ease, visibility .75s }
+  .gate::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(circle at 50% 56%, rgba(255,150,110,.5), transparent 62%);
+    opacity:0; transition:opacity .75s ease }
+  .gate.lit::after{ opacity:1 }
+  .gate.done{ opacity:0; visibility:hidden; pointer-events:none }
+  .gate-in{ position:relative; z-index:1; max-width:26rem }
+  .gate .glogo{ width:46px; height:50px; margin-bottom:1.5rem; opacity:.45; transition:opacity .7s }
+  .gate.lit .glogo{ opacity:1 }
+  .gate-kicker{ font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; color:#6a6a6a; margin:0 0 .9rem }
+  .gate-title{ font-size:clamp(1.85rem,6vw,2.7rem); font-weight:800; line-height:1.25; letter-spacing:-.03em;
+    color:#d6d2ca; margin:0 0 2.4rem; transition:color .7s }
+  .gate.lit .gate-title{ color:#fff }
+  .gate-switch{ background:none; border:0; padding:0; cursor:pointer; display:block; margin:0 auto 1.6rem }
+  .gt-track{ display:block; width:132px; height:70px; border-radius:40px; background:#1e1a15;
+    border:2px solid #39322a; position:relative; transition:background .45s, border-color .45s }
+  .gt-knob{ position:absolute; top:5px; left:5px; width:56px; height:56px; border-radius:50%; background:#cfc8bd;
+    transition:transform .5s cubic-bezier(.34,1.4,.5,1), background .45s, box-shadow .45s;
+    animation:gwait 2.4s ease-in-out infinite }
+  @keyframes gwait{ 0%,100%{ box-shadow:0 0 16px 3px rgba(255,255,255,.13) }
+                    50%{ box-shadow:0 0 30px 8px rgba(255,255,255,.3) } }
+  .gate.lit .gt-track{ background:#EE6B4D; border-color:#EE6B4D }
+  .gate.lit .gt-knob{ transform:translateX(62px); background:#fff; animation:none;
+    box-shadow:0 0 48px 14px rgba(238,107,77,.75) }
+  .gate-hint{ font-size:.9rem; color:#6a6a6a; margin:0; transition:opacity .4s }
+  .gate.lit .gate-hint{ opacity:0 }
+  @media(max-width:520px){ .gt-track{ width:112px; height:60px } .gt-knob{ width:48px; height:48px }
+    .gate.lit .gt-knob{ transform:translateX(52px) } }
+
   /* 맨 위로 */
   .totop{ position:fixed; right:clamp(1rem,3vw,2.2rem); bottom:clamp(1rem,3vw,2.2rem); z-index:40;
     width:50px; height:50px; border-radius:50%; border:0; cursor:pointer; padding:0;
@@ -336,8 +372,30 @@
 </style>
 </head>
 <body>
-<script>/* 첫 페인트 전에 '꺼진 상태'를 입힌다. JS가 없으면 그냥 켜진 채로 보인다 */
-(function(){try{var m=window.matchMedia;if(!(m&&m('(prefers-reduced-motion: reduce)').matches)){document.body.classList.add('is-off','booting');}}catch(e){}})();</script>
+<script>/* 첫 페인트 전 — 처음 온 방문자에게만 입구를 보여준다 */
+(function(){try{
+  var m=window.matchMedia, reduce=m&&m('(prefers-reduced-motion: reduce)').matches, seen=false;
+  try{ seen = sessionStorage.getItem('yegamso_on')==='1'; }catch(e){}
+  if(!reduce && !seen){ document.body.classList.add('is-off','gated'); }
+}catch(e){}})();</script>
+
+<div class="gate" id="gate">
+    <div class="gate-in">
+      <svg class="glogo" viewBox="0 0 32 34" fill="none" aria-hidden="true">
+        <path d="M16 33V10M16 18L9.5 12.5M16 18L22.5 12.5M16 25L8.5 20M16 25L23.5 20"
+              stroke="#4A7355" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="16" cy="6.5" r="4.5" fill="#E48BA0"/><circle cx="8" cy="11.5" r="3.8" fill="#EE6B4D"/>
+        <circle cx="24" cy="11.5" r="3.8" fill="#3B7CA8"/><circle cx="7" cy="19" r="3.8" fill="#E3A93F"/>
+        <circle cx="25" cy="19" r="3.8" fill="#EE6B4D"/>
+      </svg>
+      <p class="gate-kicker">예술감각연구소 · 예감소</p>
+      <h1 class="gate-title">잠든 감각을<br>켜 주세요</h1>
+      <button class="gate-switch" id="gateswitch" aria-label="감각 스위치 켜기">
+        <span class="gt-track" aria-hidden="true"><span class="gt-knob"></span></span>
+      </button>
+      <p class="gate-hint">스위치를 올리면 예감소가 열려요</p>
+    </div>
+  </div>
 
 <header class="bar">
   <div class="bar-in">
@@ -575,9 +633,8 @@
           <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
           <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-sight)"/>
           <path d="M30 66l6 8 6-8" stroke="#FBF7EC" stroke-width="3.2" stroke-linejoin="round" fill="none"/>
-          <path d="M20 56V32a16 16 0 0 1 32 0v24h-6V33H26v23Z" fill="#3A2E28"/>
           <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
-          <path d="M21.5 31c0-9.5 6.5-15 14.5-15s14.5 5.5 14.5 15c-2.5-6.5-8-9-14.5-7.5-5.5 1.5-9.5 3.5-14.5 7.5Z" fill="#3A2E28"/>
+          <path d="M21 34a15 15 0 0 1 30 0q-15-9.5-30 0Z" fill="#33291F"/>
           <path d="M27.5 36.5c1.6-2.2 3.8-2.2 5.4 0M39.1 36.5c1.6-2.2 3.8-2.2 5.4 0" stroke="#3A2E28" stroke-width="2.2" stroke-linecap="round"/>
           <path d="M32 42.5c2 2.8 6 2.8 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
         </svg>
@@ -589,10 +646,10 @@
           <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
           <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-smell)"/>
           <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
-          <path d="M20 56V33a16 16 0 0 1 32 0v23h-6V34H26v22Z" fill="#3A2E28"/>
+          <path d="M20.5 58V33a15.5 15.5 0 0 1 31 0v25h-5.5V34H26v24Z" fill="#33291F"/>
           <circle cx="30" cy="36" r="2.1" fill="#3A2E28"/><circle cx="42" cy="36" r="2.1" fill="#3A2E28"/>
-          <circle cx="25" cy="41" r="3" fill="var(--c-taste)" opacity=".35"/>
-          <circle cx="47" cy="41" r="3" fill="var(--c-taste)" opacity=".35"/>
+          <circle cx="25" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
+          <circle cx="47" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
           <path d="M32 42.5c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
           <circle cx="8" cy="26" r="4.2" fill="var(--c-taste)"/><circle cx="64" cy="22" r="4.6" fill="var(--c-sight)"/>
           <circle cx="66" cy="42" r="3.6" fill="var(--c-hear)"/><circle cx="6" cy="44" r="3.6" fill="var(--c-touch)"/>
@@ -663,7 +720,6 @@
   var body=document.body;
   var btn=document.getElementById('onoff'), label=document.getElementById('onoff-label');
   var tree=document.getElementById('herotree');
-  var bootTimer=null;
 
   function render(){
     var off=body.classList.contains('is-off');
@@ -673,16 +729,29 @@
   render();
 
   // 0.6초 뒤, 스위치가 스스로 켜지고 나무에 열매가 하나씩 열린다
-  if(body.classList.contains('booting')){
-    bootTimer=setTimeout(function(){
-      body.classList.remove('is-off','booting');
-      render();
-      if(tree) tree.classList.add('grown');
-    }, 600);
-  } else if(tree){ tree.classList.add('grown'); }
+  var gate=document.getElementById('gate');
+  if(body.classList.contains('gated') && gate){
+    var opened=false;
+    var open=function(){
+      if(opened) return; opened=true;
+      gate.classList.add('lit');
+      try{ sessionStorage.setItem('yegamso_on','1'); }catch(e){}
+      setTimeout(function(){ body.classList.remove('is-off'); render(); if(tree) tree.classList.add('grown'); }, 420);
+      setTimeout(function(){ gate.classList.add('done'); body.classList.remove('gated'); }, 900);
+      setTimeout(function(){ if(gate.parentNode) gate.parentNode.removeChild(gate); }, 1700);
+    };
+    gate.addEventListener('click', open);
+    var gs=document.getElementById('gateswitch');
+    if(gs){ try{ gs.focus({preventScroll:true}); }catch(e){} }
+    addEventListener('keydown', function(ev){
+      if(!opened && (ev.key==='Enter'||ev.key===' '||ev.key==='Escape')){ ev.preventDefault(); open(); }
+    });
+  } else {
+    if(gate && gate.parentNode) gate.parentNode.removeChild(gate);
+    if(tree) tree.classList.add('grown');
+  }
 
   btn.addEventListener('click',function(){
-    if(bootTimer){ clearTimeout(bootTimer); bootTimer=null; body.classList.remove('booting'); if(tree) tree.classList.add('grown'); }
     body.classList.toggle('is-off');
     render();
   });
