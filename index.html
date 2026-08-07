@@ -164,10 +164,6 @@
   .manifesto .body b{ color:var(--ink); font-weight:700 }
   .pull{ font-size:clamp(1.45rem,4.2vw,2.15rem); font-weight:800; line-height:1.4; letter-spacing:-.02em;
     color:var(--ink); max-width:31rem; margin:2rem 0 }
-  .psc{ display:flex; flex-wrap:wrap; gap:.6rem; margin:2.2rem 0 0 }
-  .psc span{ font-size:.95rem; font-weight:600; border:1.5px solid var(--line); padding:.5rem 1rem;
-    border-radius:100px; color:var(--ink-soft) }
-  .psc span b{ color:var(--on); font-weight:800 }
   .psc-note{ margin:1.1rem 0 0; font-size:1rem; line-height:1.7; color:var(--ink-mute); max-width:33rem }
   .psc-note b{ color:var(--ink-soft); font-weight:700 }
   .shift{ margin-top:2.2rem; padding:1.3rem 1.5rem; border-radius:14px; background:var(--paper-2);
@@ -220,7 +216,8 @@
   .open-now .txt{ flex:1 1 18rem; font-size:1rem; line-height:1.65; color:var(--ink-soft) }
   .open-now .txt b{ color:var(--ink); font-weight:700 }
   .open-now .go{ font-size:.95rem; font-weight:700; color:var(--c-sight); white-space:nowrap }
-  .invite-line{ margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem }
+  .invite-line{ margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; justify-content:space-between }
+  .invite-line .btn{ margin-left:auto }
   .invite-line .q{ font-size:1.06rem; font-weight:600; color:var(--ink-soft); max-width:26rem }
 
   /* 레이어 */
@@ -413,12 +410,7 @@
       <p class="body reveal">감기로 코가 막혀, 좋아하던 국이 맹물처럼 느껴지던 날. 화면을 보며 먹다가 무슨 맛이었는지 기억나지 않던 저녁. 우리는 늘 <b>사라지고 나서야</b> 그것이 거기 있었다는 걸 알아채곤 해요.</p>
       <p class="body reveal">그리고 사람마다 깨어 있는 감각은 달라요. 누구는 소리에, 누구는 색에, 누구는 손끝에 먼저 반응하지요. <b>내가 어떤 감각에 예민하고 어떤 감각에 무딘지 알아차리는 일</b> — 그것이 곧 나를 알아가는 시간이에요.</p>
       <p class="body reveal"><b>살아 있다고 느끼는 순간은, 감각이 살아 있을 때예요.</b> 그래서 예감소는 일상의 감각을 깨우는 일을 연구해요. 거창한 무엇이 아니라, <b><span class="nb">일상의 작은 경험</span></b>으로요.</p>
-      <div class="psc reveal">
-        <span><b><span class="nb">잠시 멈춘다</span></b> Pause</span>
-        <span><b><span class="nb">잠시 느낀다</span></b> Sense</span>
-        <span><b><span class="nb">잠시 표현해본다</span></b> Create</span>
-      </div>
-      <p class="psc-note reveal">표현이라고 거창할 것 없어요. 잘 해내지 않아도 괜찮아요. <b>그 과정을 즐기는 것만으로 충분하지요.</b></p>
+      <p class="psc-note reveal">거창할 것 없어요. 잘 해내지 않아도 괜찮고요. <b>그 과정을 즐기는 것만으로 충분하지요.</b></p>
       <div class="shift reveal">
         <span class="a">“그냥 좋았어요”</span> 가 <span class="b">“식은 바람, 풀 냄새, 회색 하늘이었어요”</span> 로 바뀌는 순간. 평범하던 하루가 문득 낯설어지고, 다시 살아나기 시작해요.
       </div>
@@ -494,7 +486,7 @@
       <span class="go">초대장 보기 →</span>
     </a>
     <div class="invite-line reveal">
-      <span class="q">거창한 기획서는 없어도 괜찮아요. ‘이런 걸 함께하고 싶어요’ 한 줄이면 충분히 시작돼요.</span>
+      <span class="q">거창한 기획서는 없어도 괜찮아요.<br class="br-lg">‘이런 걸 함께하고 싶어요’ 한 줄이면 충분히 시작돼요.</span>
       <a class="btn btn-fill" href="mailto:yesgamso@gmail.com?subject=예감소 워크숍 초청 문의&body=안녕하세요, 예감소에 워크숍을 초청하고 싶습니다.%0D%0A%0D%0A- 함께하고 싶은 분들:%0D%0A- 인원 / 규모:%0D%0A- 원하는 시기:%0D%0A- 하고 싶은 것:%0D%0A">초청 문의하기 <span class="arw">↗</span></a>
     </div>
   </section>

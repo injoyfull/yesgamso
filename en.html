@@ -149,10 +149,6 @@
   .manifesto .body b{ color:var(--ink); font-weight:700 }
   .pull{ font-size:clamp(1.45rem,4vw,2.1rem); font-weight:800; line-height:1.32; letter-spacing:-.03em;
     color:var(--ink); max-width:30rem; margin:2rem 0 }
-  .psc{ display:flex; flex-wrap:wrap; gap:.6rem; margin:2.2rem 0 0 }
-  .psc span{ font-size:.95rem; font-weight:600; border:1.5px solid var(--line); padding:.5rem 1rem;
-    border-radius:100px; color:var(--ink-soft) }
-  .psc span b{ color:var(--on); font-weight:800 }
   .psc-note{ margin:1.1rem 0 0; font-size:1rem; line-height:1.7; color:var(--ink-mute); max-width:32rem }
   .psc-note b{ color:var(--ink-soft); font-weight:700 }
   .shift{ margin-top:2.2rem; padding:1.3rem 1.5rem; border-radius:14px; background:var(--paper-2);
@@ -200,7 +196,9 @@
     border:1.5px solid color-mix(in srgb,var(--c-sight) 45%,transparent); padding:.24rem .6rem; border-radius:100px; white-space:nowrap }
   .reach .txt{ flex:1 1 18rem; font-size:1rem; line-height:1.6; color:var(--ink-soft) }
   .reach .txt b{ color:var(--ink); font-weight:700 }
-  .invite-line{ margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem }
+  .invite-line{ margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; justify-content:space-between }
+  .invite-line .btn{ margin-left:auto }
+  @media(max-width:700px){ .br-lg{ display:none } }
   .invite-line .q{ font-size:1.04rem; font-weight:600; color:var(--ink-soft); max-width:26rem }
 
   .ledger{ border-top:2px solid var(--ink) }
@@ -373,12 +371,7 @@
       <p class="body reveal">The morning a cold blocked your nose and your favourite soup tasted like warm water. The evening you ate in front of a screen and couldn't recall a single flavour afterwards. We tend to notice things <b>only once they're gone</b>.</p>
       <p class="body reveal">And the senses that stay awake differ from person to person. Some of us answer first to sound, some to colour, some to what the hands touch. <b>Noticing which senses are sharp in you and which have gone quiet</b> — that is where knowing yourself begins.</p>
       <p class="body reveal"><b>To feel alive is to have your senses alive.</b> So we study how to wake the senses of ordinary life. Not through anything grand — through <b>small, everyday experiences</b>.</p>
-      <div class="psc reveal">
-        <span><b>Pause</b> for a moment</span>
-        <span><b>Sense</b> for a moment</span>
-        <span><b>Create</b> for a moment</span>
-      </div>
-      <p class="psc-note reveal">Creating doesn't have to be impressive. You don't have to be good at it. <b>Enjoying the process is more than enough.</b></p>
+      <p class="psc-note reveal">It doesn't have to be impressive. You don't have to be good at it. <b>Enjoying the process is more than enough.</b></p>
       <div class="shift reveal">
         The moment <span class="a">“it was nice, I guess”</span> turns into <span class="b">“cooled wind, the smell of grass, a grey sky”</span> — an ordinary day turns strange again, and starts coming back to life.
       </div>
@@ -451,7 +444,7 @@
       <span class="txt">We're based in <b>Hanam, South Korea</b> — and we'll travel to wherever people want this. Programmes can run in <b>Korean or English</b>.</span>
     </div>
     <div class="invite-line reveal">
-      <span class="q">No formal brief needed. One line — “we'd love to do something like this” — is enough to begin.</span>
+      <span class="q">No formal brief needed.<br class="br-lg">One line — “we'd love to do something like this” — is enough to begin.</span>
       <a class="btn btn-fill" href="mailto:yesgamso@gmail.com?subject=Workshop enquiry&body=Hello YES:GAMSO,%0D%0A%0D%0AWe would love to work with you.%0D%0A%0D%0A- Who it's for:%0D%0A- Group size:%0D%0A- Where / when:%0D%0A- What we hope for:%0D%0A">Get in touch <span class="arw">↗</span></a>
     </div>
   </section>
