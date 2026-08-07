@@ -231,15 +231,15 @@
     font-size:1.1rem; font-weight:700; color:var(--ink); max-width:33rem; line-height:1.55 }
 
   .people{ display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.8rem; margin-bottom:2.5rem }
-  .person{ display:flex; flex-direction:column; gap:.75rem }
-  .person .face{ width:76px; height:88px; margin-bottom:-.2rem }
-  .person h3{ font-size:1.16rem }
-  .person .role{ font-size:.92rem; font-weight:700; margin-top:.1rem }
+  .person{ display:flex; flex-direction:column; gap:.5rem }
+  .person .face{ width:80px; height:94px; margin-bottom:-.35rem }
+  .person h3{ font-size:1.08rem }
+  .person .role{ font-size:.85rem; font-weight:700; margin-top:.05rem; line-height:1.35 }
   .person:nth-child(1) .role{ color:var(--c-hear) }
   .person:nth-child(2) .role{ color:var(--c-sight) }
   .person:nth-child(3) .role{ color:var(--c-smell) }
-  .person .org{ font-size:.84rem; line-height:1.45; color:var(--ink-mute); margin-top:.15rem }
-  .person p{ margin:0; font-size:.96rem; line-height:1.6; color:var(--ink-soft) }
+  .person .org{ font-size:.75rem; line-height:1.4; color:var(--ink-mute); margin-top:.1rem }
+  .person p{ margin:0; font-size:.87rem; line-height:1.55; color:var(--ink-soft) }
   .net{ padding:1.6rem 1.8rem; border:1.5px solid var(--line); border-radius:16px; background:var(--paper-2); max-width:40rem }
   .net p{ margin:0; color:var(--ink-soft); font-size:1rem; line-height:1.65 }
 
@@ -508,50 +508,49 @@
     <div class="people reveal">
       <div class="person">
         <svg class="face" viewBox="0 0 72 84" fill="none" aria-hidden="true">
+          <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
           <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-taste)"/>
-          <rect x="32" y="50" width="8" height="14" rx="4" fill="#F0D5BC"/>
-          <circle cx="18" cy="36" r="11" fill="var(--c-hear)"/><circle cx="54" cy="36" r="11" fill="var(--c-hear)"/>
-          <circle cx="20" cy="22" r="10" fill="var(--c-hear)"/><circle cx="52" cy="22" r="10" fill="var(--c-hear)"/>
-          <circle cx="36" cy="15" r="12" fill="var(--c-hear)"/>
-          <circle cx="15" cy="48" r="8" fill="var(--c-hear)"/><circle cx="57" cy="48" r="8" fill="var(--c-hear)"/>
-          <circle cx="36" cy="36" r="15" fill="#F0D5BC"/>
-          <circle cx="25" cy="25" r="7.5" fill="var(--c-hear)"/><circle cx="36" cy="21" r="7.5" fill="var(--c-hear)"/>
-          <circle cx="47" cy="25" r="7.5" fill="var(--c-hear)"/>
-          <circle cx="25" cy="42" r="3.4" fill="var(--c-taste)" opacity=".35"/>
-          <circle cx="47" cy="42" r="3.4" fill="var(--c-taste)" opacity=".35"/>
-          <circle cx="30" cy="37" r="2.1" fill="#3A2E28"/><circle cx="42" cy="37" r="2.1" fill="#3A2E28"/>
-          <path d="M32 44c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <circle cx="18" cy="34" r="10.5" fill="var(--c-hear)"/><circle cx="54" cy="34" r="10.5" fill="var(--c-hear)"/>
+          <circle cx="21" cy="21" r="9.5" fill="var(--c-hear)"/><circle cx="51" cy="21" r="9.5" fill="var(--c-hear)"/>
+          <circle cx="36" cy="15" r="11" fill="var(--c-hear)"/>
+          <circle cx="16" cy="45" r="7.5" fill="var(--c-hear)"/><circle cx="56" cy="45" r="7.5" fill="var(--c-hear)"/>
+          <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
+          <circle cx="26" cy="24" r="7" fill="var(--c-hear)"/><circle cx="36" cy="20" r="7" fill="var(--c-hear)"/>
+          <circle cx="46" cy="24" r="7" fill="var(--c-hear)"/>
+          <circle cx="25" cy="40" r="3.2" fill="var(--c-taste)" opacity=".35"/>
+          <circle cx="47" cy="40" r="3.2" fill="var(--c-taste)" opacity=".35"/>
+          <circle cx="30" cy="35" r="2.1" fill="#3A2E28"/><circle cx="42" cy="35" r="2.1" fill="#3A2E28"/>
+          <path d="M32 41c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
         </svg>
         <div><h3>Hanna Lee</h3><div class="role">Collector of Joy</div><div class="org">Founder, in:JOYFULL Creative Studio</div></div>
         <p>Collects the joy of putting your own thoughts into a form you made yourself.</p>
       </div>
       <div class="person">
         <svg class="face" viewBox="0 0 72 84" fill="none" aria-hidden="true">
-          <path d="M21 84V70c0-8 7-13 15-13s15 5 15 13v14Z" fill="var(--c-sight)"/>
-          <circle cx="24" cy="59" r="6.5" fill="#FBF7EC"/><circle cx="33" cy="61" r="6.5" fill="#FBF7EC"/>
-          <circle cx="42" cy="61" r="6.5" fill="#FBF7EC"/><circle cx="51" cy="59" r="6.5" fill="#FBF7EC"/>
-          <rect x="32" y="42" width="8" height="18" rx="4" fill="#F0D5BC"/>
-          <ellipse cx="36" cy="31" rx="13" ry="16" fill="#F0D5BC"/>
-          <path d="M23 30C23 18 29 13 36 13s13 5 13 17c0-7-5-9-13-9s-13 2-13 9Z" fill="#3A2E28"/>
-          <circle cx="31" cy="32" r="2.1" fill="#3A2E28"/><circle cx="41" cy="32" r="2.1" fill="#3A2E28"/>
-          <path d="M27 26c2-1.6 4.5-1.6 6.5 0M38.5 26c2-1.6 4.5-1.6 6.5 0" stroke="#3A2E28" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M33 41h6" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
+          <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-sight)"/>
+          <path d="M30 66l6 8 6-8" stroke="#FBF7EC" stroke-width="3.2" stroke-linejoin="round" fill="none"/>
+          <path d="M20 56V32a16 16 0 0 1 32 0v24h-6V33H26v23Z" fill="#3A2E28"/>
+          <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
+          <path d="M21.5 31c0-9.5 6.5-15 14.5-15s14.5 5.5 14.5 15c-2.5-6.5-8-9-14.5-7.5-5.5 1.5-9.5 3.5-14.5 7.5Z" fill="#3A2E28"/>
+          <path d="M27.5 36.5c1.6-2.2 3.8-2.2 5.4 0M39.1 36.5c1.6-2.2 3.8-2.2 5.4 0" stroke="#3A2E28" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M32 42.5c2 2.8 6 2.8 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
         </svg>
         <div><h3>Seonggyeom Kim</h3><div class="role">Collector of People</div><div class="org">Director, PLAY UP</div></div>
         <p>Collects the stories that surface between words and movement.</p>
       </div>
       <div class="person">
         <svg class="face" viewBox="0 0 72 84" fill="none" aria-hidden="true">
+          <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
           <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-smell)"/>
-          <rect x="32" y="50" width="8" height="14" rx="4" fill="#F0D5BC"/>
-          <circle cx="36" cy="37" r="14.5" fill="#F0D5BC"/>
-          <path d="M20 58V33a16 16 0 0 1 32 0v25h-6V33H26v25Z" fill="#3A2E28"/>
-          <circle cx="30" cy="38" r="2.1" fill="#3A2E28"/><circle cx="42" cy="38" r="2.1" fill="#3A2E28"/>
-          <circle cx="25" cy="43" r="3.2" fill="var(--c-taste)" opacity=".35"/>
-          <circle cx="47" cy="43" r="3.2" fill="var(--c-taste)" opacity=".35"/>
-          <path d="M32 45c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
-          <circle cx="8" cy="26" r="4.5" fill="var(--c-taste)"/><circle cx="64" cy="22" r="5" fill="var(--c-sight)"/>
-          <circle cx="66" cy="44" r="3.8" fill="var(--c-hear)"/><circle cx="6" cy="46" r="3.8" fill="var(--c-touch)"/>
+          <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
+          <path d="M20 56V33a16 16 0 0 1 32 0v23h-6V34H26v22Z" fill="#3A2E28"/>
+          <circle cx="30" cy="36" r="2.1" fill="#3A2E28"/><circle cx="42" cy="36" r="2.1" fill="#3A2E28"/>
+          <circle cx="25" cy="41" r="3" fill="var(--c-taste)" opacity=".35"/>
+          <circle cx="47" cy="41" r="3" fill="var(--c-taste)" opacity=".35"/>
+          <path d="M32 42.5c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <circle cx="8" cy="26" r="4.2" fill="var(--c-taste)"/><circle cx="64" cy="22" r="4.6" fill="var(--c-sight)"/>
+          <circle cx="66" cy="42" r="3.6" fill="var(--c-hear)"/><circle cx="6" cy="44" r="3.6" fill="var(--c-touch)"/>
         </svg>
         <div><h3>Heejin Park</h3><div class="role">Collector of Colour</div><div class="org">Founder, H.Hee · Design Lead, HOATTATA</div></div>
         <p>Collects the colours and textures that pass through an ordinary day.</p>
