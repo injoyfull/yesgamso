@@ -232,7 +232,7 @@
 
   .people{ display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.8rem; margin-bottom:2.5rem }
   .person{ display:flex; flex-direction:column; gap:.5rem }
-  .person .face{ width:80px; height:94px; margin-bottom:.15rem }
+  .person .face{ width:94px; height:94px; margin-bottom:.2rem; margin-left:-2px }
   .person h3{ font-size:1.08rem }
   .person .role{ font-size:.85rem; font-weight:700; margin-top:.05rem; line-height:1.35 }
   .person:nth-child(1) .role{ color:var(--c-hear) }
@@ -240,8 +240,8 @@
   .person:nth-child(3) .role{ color:var(--c-smell) }
   .person .org{ font-size:.75rem; line-height:1.4; color:var(--ink-mute); margin-top:.1rem }
   .person p{ margin:0; font-size:.87rem; line-height:1.55; color:var(--ink-soft) }
-  .net{ padding:1.6rem 1.8rem; border:1.5px solid var(--line); border-radius:16px; background:var(--paper-2); max-width:40rem }
-  .net p{ margin:0; color:var(--ink-soft); font-size:1rem; line-height:1.65 }
+  .net{ padding:1.25rem 1.6rem; border:1.5px solid var(--line); border-radius:16px; background:var(--paper-2) }
+  .net p{ margin:0; color:var(--ink-soft); font-size:.98rem; line-height:1.6 }
 
   .contact-grid{ display:grid; grid-template-columns:1fr auto; gap:2.5rem; align-items:center }
   .contact h2{ font-size:clamp(1.9rem,5.5vw,3rem); line-height:1.12; margin-bottom:1.3rem; max-width:22rem }
@@ -566,56 +566,60 @@
     <div class="sec-head"><span class="no">COLLECTORS</span><h2>Three people, three different senses</h2></div>
     <div class="people reveal">
       <div class="person">
-        <svg class="face" viewBox="0 0 72 84" fill="none" aria-hidden="true">
-          <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
-          <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-taste)"/>
-          <circle cx="18" cy="34" r="10.5" fill="var(--c-hear)"/><circle cx="54" cy="34" r="10.5" fill="var(--c-hear)"/>
-          <circle cx="21" cy="21" r="9.5" fill="var(--c-hear)"/><circle cx="51" cy="21" r="9.5" fill="var(--c-hear)"/>
-          <circle cx="36" cy="15" r="11" fill="var(--c-hear)"/>
-          <circle cx="16" cy="45" r="7.5" fill="var(--c-hear)"/><circle cx="56" cy="45" r="7.5" fill="var(--c-hear)"/>
-          <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
-          <circle cx="26" cy="24" r="7" fill="var(--c-hear)"/><circle cx="36" cy="20" r="7" fill="var(--c-hear)"/>
-          <circle cx="46" cy="24" r="7" fill="var(--c-hear)"/>
-          <circle cx="25" cy="40" r="3.2" fill="var(--c-taste)" opacity=".35"/>
-          <circle cx="47" cy="40" r="3.2" fill="var(--c-taste)" opacity=".35"/>
-          <circle cx="30" cy="35" r="2.1" fill="#3A2E28"/><circle cx="42" cy="35" r="2.1" fill="#3A2E28"/>
-          <path d="M32 41c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+        <svg class="face" viewBox="0 0 84 84" fill="none" aria-hidden="true">
+          <rect x="19" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
+          <path d="M0 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-taste)"/>
+          <circle cx="10" cy="33" r="9.5" fill="var(--c-hear)"/><circle cx="38" cy="33" r="9.5" fill="var(--c-hear)"/>
+          <circle cx="12" cy="21" r="9" fill="var(--c-hear)"/><circle cx="36" cy="21" r="9" fill="var(--c-hear)"/>
+          <circle cx="24" cy="14" r="10.5" fill="var(--c-hear)"/>
+          <circle cx="10" cy="44" r="7" fill="var(--c-hear)"/><circle cx="38" cy="44" r="7" fill="var(--c-hear)"/>
+          <circle cx="24" cy="34" r="14.5" fill="#F0D5BC"/>
+          <circle cx="15" cy="23" r="6.5" fill="var(--c-hear)"/><circle cx="24" cy="19" r="6.5" fill="var(--c-hear)"/>
+          <circle cx="33" cy="23" r="6.5" fill="var(--c-hear)"/>
+          <circle cx="13" cy="40" r="3.2" fill="var(--c-taste)" opacity=".3"/>
+          <circle cx="35" cy="40" r="3.2" fill="var(--c-taste)" opacity=".3"/>
+          <circle cx="18" cy="35" r="2.1" fill="#3A2E28"/><circle cx="30" cy="35" r="2.1" fill="#3A2E28"/>
+          <path d="M20 41c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <circle cx="60" cy="13" r="4.8" fill="var(--c-taste)"/><circle cx="74" cy="26" r="3.6" fill="var(--c-smell)"/>
+          <circle cx="63" cy="45" r="3.4" fill="var(--c-sight)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-touch)"/>
         </svg>
         <div><h3>Hanna Lee</h3><div class="role">Collector of Joy</div><div class="org">Founder, in:JOYFULL Creative Studio</div></div>
         <p>Collects the joy of putting your own thoughts into a form you made yourself.</p>
       </div>
       <div class="person">
-        <svg class="face" viewBox="0 0 72 84" fill="none" aria-hidden="true">
-          <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
-          <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-sight)"/>
-          <path d="M30 66l6 8 6-8" stroke="#FBF7EC" stroke-width="3.2" stroke-linejoin="round" fill="none"/>
-          <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
-          <path d="M21 34a15 15 0 0 1 30 0q-15-9.5-30 0Z" fill="#33291F"/>
-          <path d="M27.5 36.5c1.6-2.2 3.8-2.2 5.4 0M39.1 36.5c1.6-2.2 3.8-2.2 5.4 0" stroke="#3A2E28" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M32 42.5c2 2.8 6 2.8 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+        <svg class="face" viewBox="0 0 84 84" fill="none" aria-hidden="true">
+          <rect x="19" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
+          <path d="M0 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-sight)"/>
+          <path d="M18 66l6 8 6-8" stroke="#FBF7EC" stroke-width="3.2" stroke-linejoin="round" fill="none"/>
+          <circle cx="24" cy="34" r="14.5" fill="#F0D5BC"/>
+          <path d="M9 34a15 15 0 0 1 30 0q-15-9.5-30 0Z" fill="#33291F"/>
+          <path d="M15.5 36.5c1.6-2.2 3.8-2.2 5.4 0M27.1 36.5c1.6-2.2 3.8-2.2 5.4 0" stroke="#3A2E28" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M20 42.5c2 2.8 6 2.8 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <circle cx="60" cy="13" r="4.8" fill="var(--c-sight)"/><circle cx="74" cy="26" r="3.6" fill="var(--c-hear)"/>
+          <circle cx="63" cy="45" r="3.4" fill="var(--c-smell)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-taste)"/>
         </svg>
         <div><h3>Seonggyeom Kim</h3><div class="role">Collector of People</div><div class="org">Director, PLAY UP</div></div>
         <p>Collects the stories that surface between words and movement.</p>
       </div>
       <div class="person">
-        <svg class="face" viewBox="0 0 72 84" fill="none" aria-hidden="true">
-          <rect x="31" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
-          <path d="M12 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-smell)"/>
-          <circle cx="36" cy="34" r="14.5" fill="#F0D5BC"/>
-          <path d="M20.5 58V33a15.5 15.5 0 0 1 31 0v25h-5.5V34H26v24Z" fill="#33291F"/>
-          <circle cx="30" cy="36" r="2.1" fill="#3A2E28"/><circle cx="42" cy="36" r="2.1" fill="#3A2E28"/>
-          <circle cx="25" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
-          <circle cx="47" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
-          <path d="M32 42.5c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
-          <circle cx="8" cy="26" r="4.2" fill="var(--c-taste)"/><circle cx="64" cy="22" r="4.6" fill="var(--c-sight)"/>
-          <circle cx="66" cy="42" r="3.6" fill="var(--c-hear)"/><circle cx="6" cy="44" r="3.6" fill="var(--c-touch)"/>
+        <svg class="face" viewBox="0 0 84 84" fill="none" aria-hidden="true">
+          <rect x="19" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
+          <path d="M0 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-smell)"/>
+          <circle cx="24" cy="34" r="14.5" fill="#F0D5BC"/>
+          <path d="M8.5 58V33a15.5 15.5 0 0 1 31 0v25h-5.5V34H14v24Z" fill="#33291F"/>
+          <circle cx="18" cy="36" r="2.1" fill="#3A2E28"/><circle cx="30" cy="36" r="2.1" fill="#3A2E28"/>
+          <circle cx="13" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
+          <circle cx="35" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
+          <path d="M20 42.5c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <circle cx="60" cy="13" r="4.8" fill="var(--c-hear)"/><circle cx="74" cy="26" r="3.6" fill="var(--c-sight)"/>
+          <circle cx="63" cy="45" r="3.4" fill="var(--c-smell)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-touch)"/>
         </svg>
         <div><h3>Heejin Park</h3><div class="role">Collector of Colour</div><div class="org">Founder, H.Hee · Design Lead, HOATTATA</div></div>
         <p>Collects the colours and textures that pass through an ordinary day.</p>
       </div>
     </div>
     <div class="net reveal">
-      <p>Visual art, performance and design. Three people who each stand on their own, and walk together — a small collaborative practice rather than a company.</p>
+      <p>Visual art, performance and design — three people who each stand on their own, and walk together.</p>
     </div>
   </section>
 
