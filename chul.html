@@ -55,6 +55,10 @@
   .brand{ display:flex; align-items:center; gap:.5rem; font-family:var(--mono); font-weight:700; font-size:1rem }
   .brand .logo{ width:24px; height:26px; flex:none }
   .brand .on{ color:var(--on) }
+  .lang{ font-family:var(--mono); font-size:.72rem; font-weight:600; color:var(--ink-mute);
+    border:1.5px solid var(--line); border-radius:100px; padding:.22rem .6rem; white-space:nowrap }
+  .lang:hover{ color:var(--on); border-color:var(--on) }
+  .lang b{ color:var(--ink) }
   .home{ font-size:.88rem; font-weight:600; color:var(--ink-soft) }
   .home:hover{ color:var(--on) }
 
@@ -97,6 +101,7 @@
   .meet.show .when{ background:color-mix(in srgb,var(--spark) 18%,transparent); color:var(--spark) }
   .meet.declare h3, .meet.show h3{ color:var(--ink) }
   .meet p{ margin:0 0 .7rem; font-size:1rem; line-height:1.75; color:var(--ink-soft) }
+  .kit{ color:var(--on); font-weight:800 }
   .meet .q{ font-size:.98rem; font-weight:700; color:var(--ink) }
   .meet .q::before{ content:"— "; color:var(--on) }
 
@@ -135,6 +140,18 @@
     *{ animation:none !important; transition:none !important }
     .reveal{ opacity:1; transform:none }
   }
+
+  /* 맨 위로 */
+  .totop{ position:fixed; right:clamp(1rem,3vw,2.2rem); bottom:clamp(1rem,3vw,2.2rem); z-index:40;
+    width:50px; height:50px; border-radius:50%; border:0; cursor:pointer; padding:0;
+    background:var(--on); color:#fff; display:grid; place-items:center;
+    box-shadow:0 8px 20px var(--shadow);
+    opacity:0; visibility:hidden; transform:translateY(12px) scale(.9);
+    transition:opacity .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1), visibility .3s, background .2s }
+  .totop.show{ opacity:1; visibility:visible; transform:none }
+  .totop:hover{ background:var(--on-bright); transform:translateY(-4px) }
+  .totop svg{ width:22px; height:22px }
+  @media(max-width:520px){ .totop{ width:44px; height:44px } }
   :focus-visible{ outline:2.5px solid var(--on); outline-offset:3px; border-radius:3px }
 </style>
 </head>
@@ -143,7 +160,7 @@
 <header class="bar">
   <div class="bar-in">
     <a class="brand" href="./"><svg class="logo" viewBox="0 0 32 34" fill="none" aria-hidden="true"><path d="M16 33V10M16 18L9.5 12.5M16 18L22.5 12.5M16 25L8.5 20M16 25L23.5 20" stroke="var(--tree)" stroke-width="3.2" stroke-linecap="round"/><circle cx="16" cy="6.5" r="4.5" fill="#E48BA0"/><circle cx="8" cy="11.5" r="3.8" fill="#EE6B4D"/><circle cx="24" cy="11.5" r="3.8" fill="#3B7CA8"/><circle cx="7" cy="19" r="3.8" fill="#E3A93F"/><circle cx="25" cy="19" r="3.8" fill="#EE6B4D"/></svg><span>예감소<span class="on">:ON</span></span></a>
-    <a class="home" href="./">홈으로 →</a>
+    <div class="bar-right"><a class="lang" href="en.html"><b>한국어</b> · EN</a><a class="home" href="./">홈으로 →</a></div>
   </div>
 </header>
 
@@ -166,7 +183,9 @@
       <span class="no">1차 · 인조이풀</span>
       <h3>철을 감각하다</h3>
       <div class="when">10월 3일 (토) 오후 2–4시</div>
-      <p>계절의 소리·색·향을 만나며 잠든 감각을 살며시 깨워요. 수집 노트와 수집통을 받아, 나의 기록을 시작합니다.</p>
+      <p>작은 상자 하나를 받아요. <b class="kit">「오감 스위치」</b> — 소리와 색, 향과 촉감, 맛의 조각이 담긴 다섯 칸이에요.</p>
+      <p>하나씩 열어보다 보면 알게 되지요. <b>어떤 칸은 익숙하고, 어떤 칸은 영 낯설다</b>는 걸. 내가 자주 쓰며 살아온 감각과, 오래 잠들어 있던 감각을 처음으로 나란히 마주하는 시간이에요.</p>
+      <p>그리고 수집 노트를 펼쳐 첫 기록을 시작합니다.</p>
       <p class="q">나는 무엇을 느끼며 살아가고 있는가</p>
     </div>
 
@@ -198,6 +217,7 @@
   <section>
     <span class="sec-label"><span class="en">TO KEEP</span><span class="ko">손에 남는 것</span></span>
     <div class="keeps reveal">
+      <div class="keep"><b>「오감 스위치」</b><span>다섯 감각의 조각이 담긴 작은 상자. 내 감각의 지도를 처음 확인하는 도구</span></div>
       <div class="keep"><b>수집 노트 &amp; 수집통</b><span>세 번의 만남을 관통하는 나의 감각 기록</span></div>
       <div class="keep"><b>미니 쿠션</b><span>내가 고른 색과 패턴. 집에서 한 땀씩 완성하는, 일상으로 가져가는 감각</span></div>
       <div class="keep"><b>『철, 나를 수집하다』</b><span>참여자들의 기록이 모인 공동 아카이브. 11월 전시에서 함께 펼쳐져요</span></div>
@@ -231,6 +251,13 @@
   </div>
 </footer>
 
+<button class="totop" id="totop" aria-label="맨 위로">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V6M6 12l6-6 6 6"/>
+  </svg>
+</button>
+
+
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -239,6 +266,13 @@
     });
   },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var top_=document.getElementById('totop');
+  if(top_){
+    var onScroll=function(){ top_.classList.toggle('show', window.scrollY>480); };
+    addEventListener('scroll', onScroll, {passive:true}); onScroll();
+    top_.addEventListener('click', function(){ scrollTo({top:0, behavior:'smooth'}); });
+  }
 })();
 </script>
 </body>

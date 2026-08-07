@@ -54,9 +54,14 @@
     backdrop-filter:blur(10px); border-bottom:1px solid var(--line) }
   .bar-in{ max-width:46rem; margin:0 auto; padding:.7rem clamp(1.25rem,5vw,2.5rem);
     display:flex; align-items:center; justify-content:space-between; gap:1rem }
+  .bar-right{ display:flex; align-items:center; gap:.9rem }
   .brand{ display:flex; align-items:center; gap:.5rem; font-family:var(--mono); font-weight:700; font-size:1rem }
   .brand .logo{ width:24px; height:26px; flex:none }
   .brand .on{ color:var(--on) }
+  .lang{ font-family:var(--mono); font-size:.72rem; font-weight:600; color:var(--ink-mute);
+    border:1.5px solid var(--line); border-radius:100px; padding:.22rem .6rem; white-space:nowrap }
+  .lang:hover{ color:var(--on); border-color:var(--on) }
+  .lang b{ color:var(--ink) }
   .home{ font-size:.88rem; font-weight:600; color:var(--ink-soft) }
   .home:hover{ color:var(--on) }
 
@@ -156,6 +161,18 @@
     *{ animation:none !important; transition:none !important }
     .reveal{ opacity:1; transform:none }
   }
+
+  /* 맨 위로 */
+  .totop{ position:fixed; right:clamp(1rem,3vw,2.2rem); bottom:clamp(1rem,3vw,2.2rem); z-index:40;
+    width:50px; height:50px; border-radius:50%; border:0; cursor:pointer; padding:0;
+    background:var(--on); color:#fff; display:grid; place-items:center;
+    box-shadow:0 8px 20px var(--shadow);
+    opacity:0; visibility:hidden; transform:translateY(12px) scale(.9);
+    transition:opacity .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1), visibility .3s, background .2s }
+  .totop.show{ opacity:1; visibility:visible; transform:none }
+  .totop:hover{ background:var(--on-bright); transform:translateY(-4px) }
+  .totop svg{ width:22px; height:22px }
+  @media(max-width:520px){ .totop{ width:44px; height:44px } }
   :focus-visible{ outline:2.5px solid var(--on); outline-offset:3px; border-radius:6px }
 </style>
 </head>
@@ -175,7 +192,7 @@
       </svg>
       <span>예감소<span class="on">:ON</span></span>
     </a>
-    <a class="home" href="./">홈으로 →</a>
+    <div class="bar-right"><a class="lang" href="en.html"><b>한국어</b> · EN</a><a class="home" href="./">홈으로 →</a></div>
   </div>
 </header>
 
@@ -288,6 +305,13 @@
   </div>
 </footer>
 
+<button class="totop" id="totop" aria-label="맨 위로">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V6M6 12l6-6 6 6"/>
+  </svg>
+</button>
+
+
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -296,6 +320,13 @@
     });
   },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var top_=document.getElementById('totop');
+  if(top_){
+    var onScroll=function(){ top_.classList.toggle('show', window.scrollY>480); };
+    addEventListener('scroll', onScroll, {passive:true}); onScroll();
+    top_.addEventListener('click', function(){ scrollTo({top:0, behavior:'smooth'}); });
+  }
 })();
 </script>
 </body>
