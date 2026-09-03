@@ -159,9 +159,9 @@ vercel deploy --prod --yes                            # 즉시 배포가 필요�
 <span class="no"><span class="en">MANIFESTO</span><span class="ko">선언</span></span>
 ```
 영문(초록, mono) 위 / 한글(회색) 아래. 전 섹션 공통 체계.
-`MANIFESTO/선언 · FIVE SENSES/오감 · INVITE/초청하기 · LAYERS/해온 일들 · ORIGIN/시작 · COLLECTORS/수집가 · CONTACT/연락`
+`MANIFESTO/선언 · FIVE SENSES/오감 · INVITE/초청하기 · LAYERS/기록 · ORIGIN/시작 · COLLECTORS/수집가 · CONTACT/연락`
 
-LAYERS의 한글 라벨은 **해온 일들** (2026-09-04, 아티팩트 코멘트 — '켜' 홀로는 뜻이 안 잡힘). '켜' 말놀이는 h2 "켜켜이 쌓여가는 프로젝트"와 인트로에 남김. 내브 링크도 같은 말.
+LAYERS의 한글 라벨은 **기록** (2026-09-04 확정. 켜 → 해온 일들 → 기록). 이유: ① 다른 라벨과 같은 두 글자 ② 인트로가 이미 쓰는 말("기록이 남고, 그 기록이 한 켜씩") ③ **연구소**는 기록을 남긴다 ④ 완료·진행 중·개발 중을 다 덮는 시제 중립. '켜' 말놀이는 h2와 인트로에 남김. 내브 링크도 같은 말.
 
 ---
 
