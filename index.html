@@ -14,7 +14,7 @@
     --tree:#4A7355;
     --on:#EE6B4D; --on-bright:#FF7F63;
     /* 오감 — 로고의 다섯 점 */
-    --c-sight:#3B7CA8; --c-hear:#E48BA0; --c-smell:#E3A93F; --c-taste:#EE6B4D; --c-touch:#5F8A6A;
+    --c-sight:#3B7CA8; --c-hear:#E48BA0; --c-smell:#E3A93F; --c-taste:#EE6B4D; --c-touch:#5F8A6A; --suit:#2F2C28; --suit-2:#8C857B;
     --shadow:rgba(28,26,17,.12);
     --sans:'Apple SD Gothic Neo','Pretendard','Pretendard Variable',-apple-system,system-ui,'Malgun Gothic','Segoe UI',sans-serif;
     --mono:'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;
@@ -27,7 +27,7 @@
       --line:#2E2A20;
       --tree:#7FA98A;
       --on:#FF836A; --on-bright:#FF9C85;
-      --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E;
+      --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E; --suit:#8A837A; --suit-2:#2A2622;
       --shadow:rgba(0,0,0,.5);
     }
   }
@@ -35,14 +35,14 @@
     --paper:#FCF8F0; --paper-2:#F5F0E4; --paper-3:#EDE7D8;
     --ink:#211D18; --ink-soft:#5A5348; --ink-mute:#96907F; --line:#E6DFD0; --tree:#4A7355;
     --on:#EE6B4D; --on-bright:#FF7F63;
-    --c-sight:#3B7CA8; --c-hear:#E48BA0; --c-smell:#E3A93F; --c-taste:#EE6B4D; --c-touch:#5F8A6A;
+    --c-sight:#3B7CA8; --c-hear:#E48BA0; --c-smell:#E3A93F; --c-taste:#EE6B4D; --c-touch:#5F8A6A; --suit:#2F2C28; --suit-2:#8C857B;
     --shadow:rgba(28,26,17,.12);
   }
   :root[data-theme="dark"]{
     --paper:#12100C; --paper-2:#1B1813; --paper-3:#262219;
     --ink:#F3EEE2; --ink-soft:#C0BAA8; --ink-mute:#8B8474; --line:#2E2A20; --tree:#7FA98A;
     --on:#FF836A; --on-bright:#FF9C85;
-    --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E;
+    --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E; --suit:#8A837A; --suit-2:#2A2622;
     --shadow:rgba(0,0,0,.5);
   }
 
@@ -61,7 +61,7 @@
     --paper:#050505; --paper-2:#0e0e0e; --paper-3:#161616;
     --ink:#6a6a6a; --ink-soft:#484848; --ink-mute:#3a3a3a; --line:#1d1d1d;
     --tree:#565656; --on:#5a5a5a; --on-bright:#666;
-    --c-sight:#565656; --c-hear:#565656; --c-smell:#565656; --c-taste:#565656; --c-touch:#565656;
+    --c-sight:#565656; --c-hear:#565656; --c-smell:#565656; --c-taste:#565656; --c-touch:#565656; --suit:#565656; --suit-2:#3a3a3a;
     --shadow:rgba(0,0,0,.6);
   }
   body.is-off .logo circle{ fill:#4a4a4a }
@@ -632,15 +632,19 @@
       </div>
       <div class="person">
         <svg class="face" viewBox="0 0 84 84" fill="none" aria-hidden="true">
-          <rect x="19" y="44" width="10" height="26" rx="5" fill="#F0D5BC"/>
-          <path d="M0 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-sight)"/>
-          <path d="M18 66l6 8 6-8" stroke="#FBF7EC" stroke-width="3.2" stroke-linejoin="round" fill="none"/>
-          <circle cx="24" cy="34" r="14.5" fill="#F0D5BC"/>
-          <path d="M9 34a15 15 0 0 1 30 0q-15-9.5-30 0Z" fill="#33291F"/>
-          <path d="M15.5 36.5c1.6-2.2 3.8-2.2 5.4 0M27.1 36.5c1.6-2.2 3.8-2.2 5.4 0" stroke="#3A2E28" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M20 42.5c2 2.8 6 2.8 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <rect x="19" y="40" width="10" height="30" rx="5" fill="#F0D5BC"/>
+          <path d="M0 84c0-14 11-22 24-22s24 9 24 22Z" fill="var(--suit)"/>
+          <path d="M18 63l6 8 6-8" stroke="var(--suit-2)" stroke-width="3.2" stroke-linejoin="round" fill="none"/>
+          <circle cx="24" cy="30" r="14.5" fill="#F0D5BC"/>
+          <path d="M9.5 30a14.5 14.5 0 0 1 29 0c0-4.4-3.6-7.4-9.2-8.4-2.8-.5-4.6-1.8-6-3.6-2.2 3.8-5.8 5.6-9.4 6.8-3 1-4.4 2.8-4.4 5.2Z" fill="#2E2A26"/>
+          <path d="M15.2 32.6c1.6-2.2 3.8-2.2 5.4 0M27.4 32.6c1.6-2.2 3.8-2.2 5.4 0" stroke="#3A2E28" stroke-width="2.2" stroke-linecap="round"/>
+          <g stroke="#3A342E" stroke-width="1.7" fill="none" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="12.6" y="27.6" width="10.6" height="8.4" rx="1.8"/><rect x="24.8" y="27.6" width="10.6" height="8.4" rx="1.8"/>
+            <path d="M23.2 31.4h1.6M12.6 30.6l-2.9.6M35.4 30.6l2.9.6"/>
+          </g>
+          <path d="M19.6 39.8c2.2 3 6.6 3 8.8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
           <circle cx="60" cy="13" r="4.8" fill="var(--c-sight)"/><circle cx="74" cy="26" r="3.6" fill="var(--c-hear)"/>
-          <circle cx="63" cy="45" r="3.4" fill="var(--c-smell)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-taste)"/>
+          <circle cx="63" cy="45" r="3.4" fill="var(--c-smell)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-touch)"/>
         </svg>
         <div><h3>김성겸</h3><div class="role"><span class="nb">인간수집가</span></div><div class="org">플레이업 원장</div></div>
         <p>말과 몸짓 사이에서 피어나는 사람의 이야기를 수집해요.</p>
