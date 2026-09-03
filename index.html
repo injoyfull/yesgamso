@@ -12,7 +12,7 @@
     --ink:#211D18; --ink-soft:#5A5348; --ink-mute:#96907F;
     --line:#E6DFD0;
     --tree:#4A7355;
-    --on:#EE6B4D; --on-bright:#FF7F63; --bul:#E09400;
+    --on:#EE6B4D; --on-bright:#FF7F63;
     /* 오감 — 로고의 다섯 점 */
     --c-sight:#3B7CA8; --c-hear:#E48BA0; --c-smell:#E3A93F; --c-taste:#EE6B4D; --c-touch:#5F8A6A;
     --shadow:rgba(28,26,17,.12);
@@ -26,7 +26,7 @@
       --ink:#F3EEE2; --ink-soft:#C0BAA8; --ink-mute:#8B8474;
       --line:#2E2A20;
       --tree:#7FA98A;
-      --on:#FF836A; --on-bright:#FF9C85; --bul:#FFD24A;
+      --on:#FF836A; --on-bright:#FF9C85;
       --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E;
       --shadow:rgba(0,0,0,.5);
     }
@@ -34,14 +34,14 @@
   :root[data-theme="light"]{
     --paper:#FCF8F0; --paper-2:#F5F0E4; --paper-3:#EDE7D8;
     --ink:#211D18; --ink-soft:#5A5348; --ink-mute:#96907F; --line:#E6DFD0; --tree:#4A7355;
-    --on:#EE6B4D; --on-bright:#FF7F63; --bul:#E09400;
+    --on:#EE6B4D; --on-bright:#FF7F63;
     --c-sight:#3B7CA8; --c-hear:#E48BA0; --c-smell:#E3A93F; --c-taste:#EE6B4D; --c-touch:#5F8A6A;
     --shadow:rgba(28,26,17,.12);
   }
   :root[data-theme="dark"]{
     --paper:#12100C; --paper-2:#1B1813; --paper-3:#262219;
     --ink:#F3EEE2; --ink-soft:#C0BAA8; --ink-mute:#8B8474; --line:#2E2A20; --tree:#7FA98A;
-    --on:#FF836A; --on-bright:#FF9C85; --bul:#FFD24A;
+    --on:#FF836A; --on-bright:#FF9C85;
     --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E;
     --shadow:rgba(0,0,0,.5);
   }
@@ -60,7 +60,7 @@
   body.is-off{
     --paper:#050505; --paper-2:#0e0e0e; --paper-3:#161616;
     --ink:#6a6a6a; --ink-soft:#484848; --ink-mute:#3a3a3a; --line:#1d1d1d;
-    --tree:#565656; --on:#5a5a5a; --on-bright:#666; --bul:#5a5a5a;
+    --tree:#565656; --on:#5a5a5a; --on-bright:#666;
     --c-sight:#565656; --c-hear:#565656; --c-smell:#565656; --c-taste:#565656; --c-touch:#565656;
     --shadow:rgba(0,0,0,.6);
   }
@@ -81,7 +81,6 @@
 
   /* 한글 조판 — 의미 덩어리는 쪼개지 않는다 */
   .nb{ white-space:nowrap }
-  .bul{ color:var(--bul) }
   @media(max-width:700px){ .br-lg{ display:none } }
   .kicker{ font-family:var(--mono); font-size:.74rem; letter-spacing:.02em; color:var(--ink-mute) }
   .mark{ background:linear-gradient(transparent 56%, color-mix(in srgb,var(--c-smell) 55%,transparent) 56%); padding:0 .08em; border-radius:3px }
@@ -312,7 +311,7 @@
     opacity:0; transform:translateY(14px) rotate(-8deg);
     transition:opacity .9s ease, transform .9s ease }
   .doodle.lit{ opacity:.95; transform:none }
-  .d1{ right:2%; top:20% } .d2{ left:1%; top:56% } .d3{ right:3%; top:26% }
+  .d1{ right:2%; top:20% } .d3{ right:3%; top:26% }
   @media(max-width:1000px){ .doodle{ display:none } }
 
   .reveal{ opacity:0; transform:translateY(18px); transition:opacity .75s ease, transform .75s ease }
@@ -546,7 +545,7 @@
       </div>
     </div>
     <a class="open-now reveal" href="chul.html">
-      <span class="badge">까<span class="bul">불</span>고 1기 모집</span>
+      <span class="badge">까불고 1기 모집</span>
       <span class="txt"><b>나는, <span class="nb">어떤 감각의 사람일까?</span></b> — 내 안의 감각을 켜고, 나의 색을 줍고, 감각으로 나를 소개하는 <span class="nb">10월의 세 토요일</span>. <span class="nb">하남 3040</span>과 함께해요.</span>
       <span class="go">초대장 보기 →</span>
     </a>
@@ -558,12 +557,6 @@
 
   <!-- 레이어 -->
   <section id="archive">
-    <span class="doodle d2">
-      <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M12 58Q28 24 44 58T78 58" stroke="var(--c-hear)" stroke-width="6" stroke-linecap="round"/>
-        <path d="M22 76Q38 42 54 76T88 76" stroke="var(--c-smell)" stroke-width="5" stroke-linecap="round" opacity=".8"/>
-      </svg>
-    </span>
     <div class="sec-head"><span class="no"><span class="en">LAYERS</span><span class="ko">해온 일들</span></span><h2>켜켜이 쌓여가는 프로젝트</h2></div>
     <p class="intro reveal">예감소가 지나온 자리들이에요. 감각을 한 번 <b>켤</b> 때마다 기록이 남고, 그 기록이 <b>한 켜씩</b> 포개어져 지금의 예감소가 되지요.</p>
     <div class="ledger reveal">
@@ -578,7 +571,7 @@
       <a class="row" href="chul.html">
         <span class="rno">No.02</span>
         <div class="rmain">
-          <h3>「까<span class="bul">불</span>고」 1기 · <span class="nb">철을 느끼다</span></h3>
+          <h3>「까불고」 1기 · <span class="nb">철을 느끼다</span></h3>
           <p>하남 3040과 떠나는 <span class="nb">세 번의 감각 탐험</span> — 내 안의 감각(MY SENSE), 나의 색(MY COLOR), 감각으로 쓰는 자기소개서(MY STORY). 11월엔 인스타그램에 시리즈로 남겨요. 실학박물관 <span class="nb">작은 실험 지원사업</span> 선정. <b style="color:var(--c-sight)">지금 초대장이 열려 있어요 →</b></p>
         </div>
         <div class="rmeta"><span class="pill live">진행 중</span><span class="yr">2026</span></div>
