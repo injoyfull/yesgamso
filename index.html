@@ -340,23 +340,23 @@
   .gate.lit .glogo{ opacity:1 }
   .gate-kicker{ font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; color:#6a6a6a; margin:0 0 .9rem }
   .gate-title{ font-size:clamp(1.85rem,6vw,2.7rem); font-weight:800; line-height:1.25; letter-spacing:-.03em;
-    color:#d6d2ca; margin:0 0 2.4rem; transition:color .7s; text-wrap:balance }
+    color:#d6d2ca; margin:0 0 1.9rem; transition:color .7s; text-wrap:balance }
   .gate.lit .gate-title{ color:#fff }
   .gate-switch{ background:none; border:0; padding:0; cursor:pointer; display:block; margin:0 auto 1.6rem }
-  .gt-track{ display:block; width:100px; height:54px; border-radius:30px; background:#1e1a15;
+  .gt-track{ display:block; width:76px; height:40px; border-radius:22px; background:#1e1a15;
     border:2px solid #39322a; position:relative; transition:background .45s, border-color .45s }
-  .gt-knob{ position:absolute; top:5px; left:5px; width:40px; height:40px; border-radius:50%; background:#cfc8bd;
+  .gt-knob{ position:absolute; top:3px; left:3px; width:30px; height:30px; border-radius:50%; background:#cfc8bd;
     transition:transform .5s cubic-bezier(.34,1.4,.5,1), background .45s, box-shadow .45s;
     animation:gwait 2.4s ease-in-out infinite }
   @keyframes gwait{ 0%,100%{ box-shadow:0 0 16px 3px rgba(255,255,255,.13) }
                     50%{ box-shadow:0 0 30px 8px rgba(255,255,255,.3) } }
   .gate.lit .gt-track{ background:#EE6B4D; border-color:#EE6B4D }
-  .gate.lit .gt-knob{ transform:translateX(46px); background:#fff; animation:none;
+  .gate.lit .gt-knob{ transform:translateX(36px); background:#fff; animation:none;
     box-shadow:0 0 48px 14px rgba(238,107,77,.75) }
   .gate-hint{ font-size:.9rem; color:#6a6a6a; margin:0; transition:opacity .4s }
   .gate.lit .gate-hint{ opacity:0 }
-  @media(max-width:520px){ .gt-track{ width:86px; height:46px } .gt-knob{ top:4px; left:4px; width:34px; height:34px }
-    .gate.lit .gt-knob{ transform:translateX(40px) } }
+  @media(max-width:520px){ .gt-track{ width:68px; height:36px } .gt-knob{ top:3px; left:3px; width:26px; height:26px }
+    .gate.lit .gt-knob{ transform:translateX(32px) } }
 
   /* 맨 위로 */
   .totop{ position:fixed; right:clamp(1rem,3vw,2.2rem); bottom:clamp(1rem,3vw,2.2rem); z-index:40;
