@@ -70,7 +70,7 @@
   body.is-off .btn-fill{ background:#3a3a3a; border-color:#3a3a3a; color:#9a9a9a }
 
   .wrap{ max-width:70rem; margin:0 auto; padding:0 clamp(1.25rem,5vw,4rem) }
-  .col{ max-width:var(--measure) }
+  .col{}
   a{ color:inherit; text-decoration:none }
   h1,h2,h3{ margin:0; font-weight:800; line-height:1.15; letter-spacing:-.03em; text-wrap:balance }
 
@@ -112,7 +112,7 @@
   .hero .kicker{ display:inline-flex; align-items:center; gap:.6rem; margin-bottom:1.4rem }
   .hero .kicker::before{ content:""; width:1.6rem; height:1px; background:var(--ink-mute) }
   .hero h1{ font-size:clamp(2.5rem,7.5vw,4.6rem); line-height:1.05; margin-bottom:1.4rem }
-  .lede{ font-size:clamp(1.06rem,2.3vw,1.26rem); line-height:1.7; color:var(--ink-soft); max-width:32rem; margin:0 0 2.1rem }
+  .lede{ font-size:clamp(1.06rem,2.3vw,1.26rem); line-height:1.7; color:var(--ink-soft); margin:0 0 2.1rem }
   .lede b{ color:var(--ink); font-weight:700 }
   .cta-row{ display:flex; flex-wrap:wrap; gap:.75rem; align-items:center }
   .btn{ font-family:var(--sans); font-size:1rem; font-weight:700; padding:.9rem 1.6rem; border-radius:100px;
@@ -139,26 +139,26 @@
   .sec-head .no{ font-family:var(--mono); font-size:.72rem; font-weight:600; letter-spacing:.04em;
     color:var(--on); white-space:nowrap }
   .sec-head h2{ font-size:clamp(1.6rem,4.2vw,2.3rem) }
-  .intro{ font-size:1.06rem; line-height:1.72; color:var(--ink-soft); max-width:34rem; margin:0 0 2rem; text-wrap:balance }
+  .intro{ font-size:1.06rem; line-height:1.72; color:var(--ink-soft); margin:0 0 2rem; text-wrap:balance }
   .intro b{ color:var(--ink); font-weight:700 }
 
   .manifesto .lead{ font-size:clamp(1.3rem,3.2vw,1.85rem); font-weight:800; line-height:1.4;
-    letter-spacing:-.025em; max-width:30rem; margin:0 0 1.4rem; text-wrap:balance }
-  .manifesto .body{ font-size:1.06rem; line-height:1.78; color:var(--ink-soft); max-width:32rem; margin:0 0 1.3rem }
+    letter-spacing:-.025em; margin:0 0 1.4rem; text-wrap:balance }
+  .manifesto .body{ font-size:1.06rem; line-height:1.78; color:var(--ink-soft); margin:0 0 1.3rem }
   .manifesto .body b{ color:var(--ink); font-weight:700 }
   .pull{ font-size:clamp(1.45rem,4vw,2.1rem); font-weight:800; line-height:1.32; letter-spacing:-.03em;
-    color:var(--ink); max-width:30rem; margin:2rem 0; text-wrap:balance }
-  .psc-note{ margin:1.1rem 0 0; font-size:1rem; line-height:1.7; color:var(--ink-mute); max-width:32rem }
+    color:var(--ink); margin:2rem 0; text-wrap:balance }
+  .psc-note{ margin:1.1rem 0 0; font-size:1rem; line-height:1.7; color:var(--ink-mute);}
   .psc-note b{ color:var(--ink-soft); font-weight:700 }
   .shift{ margin-top:2.2rem; padding:1.3rem 1.5rem; border-radius:14px; background:var(--paper-2);
-    font-size:1.1rem; line-height:1.6; font-weight:600; max-width:32rem; border-left:5px solid var(--on); text-wrap:balance }
+    font-size:1.1rem; line-height:1.6; font-weight:600; border-left:5px solid var(--on); text-wrap:balance }
   .shift .a{ color:var(--ink-mute); text-decoration:line-through }
   .shift .b{ color:var(--on); font-weight:800 }
 
-  .senses{ display:grid; grid-template-columns:repeat(6,1fr); gap:.85rem; max-width:34rem; margin-bottom:2rem }
+  .senses{ display:grid; grid-template-columns:repeat(6,1fr); gap:1rem; margin-bottom:2rem }
   .sense{ text-align:center }
   .sense:nth-child(even){ transform:translateY(1.5rem) }
-  .sense .bubble{ width:clamp(54px,5.5vw,68px); aspect-ratio:1; border-radius:50%; margin:0 auto .8rem;
+  .sense .bubble{ width:clamp(56px,9vw,84px); aspect-ratio:1; border-radius:50%; margin:0 auto .8rem;
     display:grid; place-items:center; transition:transform .25s cubic-bezier(.34,1.56,.64,1) }
   .sense:hover .bubble{ transform:translateY(-6px) rotate(-6deg) }
   .sense svg{ width:52%; height:52% }
@@ -200,7 +200,7 @@
   .invite-line{ margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; justify-content:space-between }
   .invite-line .btn{ margin-left:auto }
   @media(max-width:700px){ .br-lg{ display:none } }
-  .invite-line .q{ font-size:1.04rem; font-weight:600; color:var(--ink-soft); max-width:26rem }
+  .invite-line .q{ font-size:1.04rem; font-weight:600; color:var(--ink-soft);}
 
   .ledger{ border-top:2px solid var(--ink) }
   .row{ display:grid; grid-template-columns:4.5rem 1fr auto; gap:1.2rem; align-items:baseline;
@@ -208,7 +208,7 @@
   .row:hover{ background:var(--paper-2) }
   .row .rno{ font-family:var(--mono); font-size:.82rem; font-weight:600; color:var(--on) }
   .row .rmain h3{ font-size:1.22rem; margin-bottom:.4rem }
-  .row .rmain p{ margin:0; font-size:.96rem; line-height:1.6; color:var(--ink-soft); max-width:35rem }
+  .row .rmain p{ margin:0; font-size:.96rem; line-height:1.6; color:var(--ink-soft);}
   .row .rmeta{ text-align:right; white-space:nowrap }
   .pill{ font-family:var(--mono); font-size:.68rem; font-weight:600; padding:.3rem .7rem; border-radius:100px; display:inline-block }
   .pill.done{ background:var(--paper-3); color:var(--ink-soft) }
@@ -223,13 +223,13 @@
     .row .rmeta{ grid-column:2; text-align:left; margin-top:.5rem }
   }
 
-  .origin p{ font-size:1.08rem; line-height:1.8; color:var(--ink-soft); max-width:32rem; margin:0 0 1.5rem }
+  .origin p{ font-size:1.08rem; line-height:1.8; color:var(--ink-soft); margin:0 0 1.5rem }
   .origin p b{ color:var(--ink); font-weight:700 }
   .origin .care{ font-size:clamp(1.3rem,3.4vw,1.75rem); font-weight:800; line-height:1.4; letter-spacing:-.03em;
-    color:var(--ink); max-width:29rem; margin:2.2rem 0; text-wrap:balance }
+    color:var(--ink); margin:2.2rem 0; text-wrap:balance }
   .origin .join{ margin-top:2.2rem; padding:1.4rem 1.6rem; border-radius:16px;
     background:color-mix(in srgb,var(--on) 8%,var(--paper)); border-left:5px solid var(--on);
-    font-size:1.1rem; font-weight:700; color:var(--ink); max-width:33rem; line-height:1.55; text-wrap:balance }
+    font-size:1.1rem; font-weight:700; color:var(--ink); line-height:1.55; text-wrap:balance }
 
   .people{ display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.8rem; margin-bottom:2.5rem }
   .person{ display:flex; flex-direction:column; gap:.5rem }
@@ -245,7 +245,7 @@
   .net p{ margin:0; color:var(--ink-soft); font-size:.98rem; line-height:1.6 }
 
   .contact-grid{ display:grid; grid-template-columns:1fr auto; gap:2.5rem; align-items:center }
-  .contact h2{ font-size:clamp(1.9rem,5.5vw,3rem); line-height:1.12; margin-bottom:1.3rem; max-width:22rem }
+  .contact h2{ font-size:clamp(1.9rem,5.5vw,3rem); line-height:1.12; margin-bottom:1.3rem;}
   .switch-art{ width:clamp(200px,26vw,320px); height:auto; overflow:visible }
   .switch-art .strack{ fill:var(--on) }
   .switch-art .sknob{ fill:#fff }
@@ -263,7 +263,7 @@
     border-bottom:3px solid color-mix(in srgb,var(--on) 40%,transparent); display:inline-block;
     margin:.3rem 0 1.5rem; word-break:break-all }
   .big-mail:hover{ color:var(--on-bright) }
-  .contact .note{ font-size:1.02rem; line-height:1.7; color:var(--ink-soft); max-width:31rem }
+  .contact .note{ font-size:1.02rem; line-height:1.7; color:var(--ink-soft);}
 
   footer{ border-top:1px solid var(--line); padding:2.4rem 0 3.4rem }
   .foot-in{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:1.4rem; align-items:flex-end }
