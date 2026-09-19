@@ -1,0 +1,405 @@
+<title>예감소 ISSUE 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@200;300;400;600;800&display=swap">
+<style>
+  :root{
+    --paper:#FCF8F0; --paper-2:#F4EEE2; --ink:#211D18; --ink-soft:#554E44; --ink-mute:#8A8374;
+    --line:#E3DBCA; --rule:#211D18; --accent:#D9573A; --on:#EE6B4D; --tree:#4A7355;
+    --c-sight:#3B7CA8; --c-hear:#E48BA0; --c-smell:#E3A93F; --c-taste:#EE6B4D; --c-touch:#5F8A6A;
+    --suit:#2F2C28; --suit-2:#8C857B; --skin:#F0D5BC;
+    --sans:'Apple SD Gothic Neo','Pretendard','Noto Sans KR',-apple-system,system-ui,sans-serif;
+    --mono:'IBM Plex Mono','SF Mono',Menlo,'Apple SD Gothic Neo','Noto Sans KR',ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#15120E; --paper-2:#1D1914; --ink:#F2ECE0; --ink-soft:#C6BEAE; --ink-mute:#8F887A;
+      --line:#2E2921; --rule:#F2ECE0; --accent:#FF8B6F; --on:#FF8B6F; --tree:#7FA98A;
+      --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E;
+      --suit:#8A837A; --suit-2:#2A2622;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15120E; --paper-2:#1D1914; --ink:#F2ECE0; --ink-soft:#C6BEAE; --ink-mute:#8F887A;
+    --line:#2E2921; --rule:#F2ECE0; --accent:#FF8B6F; --on:#FF8B6F; --tree:#7FA98A;
+    --c-sight:#6FB4DC; --c-hear:#F0A5B8; --c-smell:#F0C060; --c-taste:#FF836A; --c-touch:#85B08E;
+    --suit:#8A837A; --suit-2:#2A2622;
+  }
+  /* 감각 OFF — 불이 꺼진다 (지금 사이트와 같은 장치) */
+  body.is-off{
+    --paper:#050505; --paper-2:#0D0D0D; --ink:#6A6A6A; --ink-soft:#4E4E4E; --ink-mute:#3C3C3C;
+    --line:#1C1C1C; --rule:#3A3A3A; --accent:#5A5A5A; --tree:#4A4A4A;
+    --c-sight:#555; --c-hear:#555; --c-smell:#555; --c-taste:#555; --c-touch:#555; --suit:#3A3A3A; --suit-2:#555;
+  }
+  body.is-off .toggle{ color:#EDEDED } body.is-off .knob{ background:#FFB894; box-shadow:0 0 12px 2px rgba(255,140,80,.8) }
+
+  *{ box-sizing:border-box }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+    font-size:17px; line-height:1.85; letter-spacing:-.01em; word-break:keep-all; overflow-wrap:break-word;
+    -webkit-font-smoothing:antialiased; transition:background .5s, color .5s }
+  a{ color:inherit }
+  .nb{ white-space:nowrap }
+  .page{ max-width:74rem; margin:0 auto; padding-inline:clamp(16px,5vw,64px) }
+  .eyebrow{ font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute); margin:0 }
+  h1,h2,h3{ margin:0; text-wrap:balance; letter-spacing:-.035em }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px }
+
+  /* 머리띠 */
+  .bar{ position:sticky; top:env(safe-area-inset-top,0px); z-index:10; background:color-mix(in srgb,var(--paper) 92%,transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line) }
+  .bar .page{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:.7rem }
+  .brand{ display:flex; align-items:center; gap:.55rem; font-family:var(--mono); font-weight:600; font-size:.95rem; text-decoration:none }
+  .brand svg{ width:22px; height:24px } .brand .on{ color:var(--on) }
+  .bar nav{ display:flex; gap:1.3rem; font-size:.86rem; color:var(--ink-soft) }
+  .bar nav a{ text-decoration:none } .bar nav a:hover{ color:var(--accent) }
+  @media(max-width:900px){ .bar nav{ display:none } }
+  .toggle{ display:flex; align-items:center; gap:.5rem; background:none; border:0; padding:0; cursor:pointer;
+    font-family:var(--mono); font-size:.72rem; color:var(--ink-mute) }
+  .track{ width:2.3rem; height:1.25rem; border-radius:1rem; background:color-mix(in srgb,var(--on) 28%,var(--paper-2)); position:relative; border:1px solid var(--line) }
+  .knob{ position:absolute; top:1px; left:1px; width:1rem; height:1rem; border-radius:50%; background:var(--on); transform:translateX(1.05rem); transition:transform .25s }
+  body.is-off .knob{ transform:none }
+  .toggle b{ color:var(--accent); font-weight:600 }
+
+  /* 표지 */
+  .cover{ position:relative; padding-block:clamp(2rem,5vw,3.5rem) clamp(2.5rem,6vw,4.5rem); border-bottom:2px solid var(--rule); overflow:hidden }
+  .cover-meta{ display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; padding-bottom:1rem; border-bottom:1px solid var(--line) }
+  .cover-tree{ position:absolute; right:clamp(-40px,-2vw,0px); top:clamp(4rem,9vw,6rem); width:clamp(180px,26vw,330px); height:auto }
+  .cover-body{ position:relative; padding-top:clamp(3rem,9vw,6.5rem); padding-right:clamp(0px,24vw,340px) }
+  .cover h1{ font-size:clamp(2.7rem,7.4vw,6rem); font-weight:800; line-height:1.08 }
+  .cover-sub{ margin:1.8rem 0 0; font-size:clamp(1.06rem,2vw,1.3rem); line-height:1.75; color:var(--ink-soft) }
+  .cover-sub b{ color:var(--ink); font-weight:600 }
+  .cover-foot{ display:flex; align-items:end; justify-content:space-between; gap:1.2rem; flex-wrap:wrap; margin-top:clamp(2.5rem,6vw,4rem) }
+  .wordmark{ display:flex; align-items:center; gap:.6rem; font-size:.95rem; color:var(--ink-soft) }
+  .wordmark b{ font-family:var(--mono); color:var(--ink); font-weight:600 }
+  .wordmark b span{ color:var(--on) }
+  .variants{ display:flex; align-items:center; gap:.35rem; font-family:var(--mono); font-size:.72rem; color:var(--ink-mute) }
+  .variants button{ font:inherit; font-weight:600; width:2rem; height:2rem; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--ink-soft); cursor:pointer }
+  .variants button[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink) }
+  @media(max-width:760px){ .cover-tree{ position:static; display:block; width:150px; margin:1.6rem 0 0 auto } .cover-body{ padding-right:0 } }
+
+  /* 목차 */
+  .contents{ display:grid; grid-template-columns:11rem 1fr; gap:1.5rem 2.5rem; padding-block:clamp(2.5rem,6vw,4rem); border-bottom:1px solid var(--line) }
+  .contents ol{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(17rem,1fr)); column-gap:2.5rem }
+  .contents a{ display:grid; grid-template-columns:2.4rem 1fr; gap:.3rem .8rem; padding:.85rem 0; border-top:1px solid var(--line); text-decoration:none }
+  .contents a:hover .t{ color:var(--accent) }
+  .contents .n{ font-family:var(--mono); font-size:.8rem; color:var(--ink-mute); padding-top:.2rem; font-variant-numeric:tabular-nums }
+  .contents .t{ font-weight:600; font-size:1.02rem; line-height:1.5 }
+  .contents .d{ grid-column:2; font-size:.88rem; color:var(--ink-mute); line-height:1.5 }
+  @media(max-width:700px){ .contents{ grid-template-columns:1fr } }
+
+  /* 꼭지 공통 */
+  .sec{ display:grid; grid-template-columns:11rem 1fr; gap:1.5rem 2.5rem; padding-block:clamp(3.5rem,8vw,6rem); border-bottom:1px solid var(--line) }
+  .sec-n{ font-size:clamp(3rem,6vw,4.6rem); font-weight:200; line-height:.9; color:var(--ink-mute); font-variant-numeric:tabular-nums; letter-spacing:-.04em }
+  .sec-n + .eyebrow{ margin-top:.9rem }
+  .sec h2{ font-size:clamp(1.9rem,4.2vw,3rem); font-weight:800; line-height:1.22; margin-bottom:1.6rem }
+  .sec p{ margin:0 0 1.2rem; font-size:1.08rem; color:var(--ink-soft) }
+  .sec p b{ color:var(--ink); font-weight:600 }
+  .lead{ font-size:clamp(1.3rem,2.6vw,1.7rem)!important; line-height:1.6; color:var(--ink)!important; font-weight:600; letter-spacing:-.02em }
+  .sec .eyebrow{ font-size:.72rem; line-height:1.6; margin:0; color:var(--ink-mute) }
+  .sign{ font-family:var(--mono); font-size:.8rem; color:var(--ink-mute)!important; margin-top:2rem!important }
+  @media(max-width:700px){ .sec{ grid-template-columns:1fr } }
+
+  /* 감각의 목록 */
+  .index{ display:grid; grid-template-columns:repeat(auto-fit,minmax(21rem,1fr)); column-gap:2.5rem; margin-top:2.2rem }
+  .index h3{ grid-column:1/-1; font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.08em; color:var(--ink-mute); padding-bottom:.6rem; margin-top:1.4rem }
+  .row{ display:grid; grid-template-columns:.75rem 2.2rem 5.5rem 1fr; align-items:baseline; gap:.6rem; padding:.8rem 0; border-top:1px solid var(--line); font-size:.98rem; line-height:1.55 }
+  .row .dot{ width:.62rem; height:.62rem; border-radius:50%; align-self:center }
+  .row .dot.beyond{ background:transparent; border:1.5px dashed var(--ink-mute) }
+  .row .no{ font-family:var(--mono); font-size:.75rem; color:var(--ink-mute); font-variant-numeric:tabular-nums }
+  .row .nm{ font-weight:600 }
+  .row .ds{ color:var(--ink-soft) }
+  @media(max-width:520px){ .row{ grid-template-columns:.75rem 2rem 1fr } .row .ds{ grid-column:3 } }
+
+  /* 숫자 */
+  .facts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(10rem,1fr)); gap:0; margin-top:1rem; border-top:2px solid var(--rule) }
+  .fact{ padding:1.4rem 1.2rem 1.4rem 0; border-bottom:1px solid var(--line) }
+  .fact .num{ font-size:clamp(3rem,6vw,4.4rem); font-weight:200; line-height:1; letter-spacing:-.05em; font-variant-numeric:tabular-nums }
+  .fact .num small{ font-size:.32em; font-weight:400; letter-spacing:0; margin-left:.2em; color:var(--ink-mute) }
+  .fact p{ margin:.7rem 0 0!important; font-size:.92rem!important; line-height:1.55 }
+
+  /* 함께할 수 있는 자리 */
+  .offer{ display:grid; grid-template-columns:10rem 1fr; gap:.4rem 2rem; padding:1.6rem 0; border-top:1px solid var(--line) }
+  .offer:first-of-type{ border-top:2px solid var(--rule) }
+  .offer .eyebrow{ padding-top:.45rem }
+  .offer h3{ font-size:1.45rem; font-weight:800; line-height:1.35; margin-bottom:.5rem }
+  .offer p{ margin:0 0 .6rem!important }
+  .offer .where{ font-size:.92rem!important; color:var(--ink-mute)!important }
+  @media(max-width:620px){ .offer{ grid-template-columns:1fr } }
+  .cta{ display:inline-flex; align-items:center; gap:.6rem; margin-top:2rem; padding:.95rem 1.7rem; border-radius:100px;
+    background:var(--ink); color:var(--paper); text-decoration:none; font-weight:600; font-size:1rem }
+  .cta:hover{ background:var(--accent) }
+  .cta.ghost{ background:transparent; color:var(--ink); border:1.5px solid var(--ink) }
+  .cta.ghost:hover{ background:var(--ink); color:var(--paper) }
+  .ctas{ display:flex; flex-wrap:wrap; gap:.8rem; align-items:center }
+
+  /* 특집 */
+  .feature-head{ font-family:var(--mono); font-size:clamp(1rem,2vw,1.2rem); letter-spacing:.02em; margin-bottom:1.4rem!important; color:var(--ink)!important }
+  .issue{ display:grid; grid-template-columns:14rem 1fr; gap:.4rem 2rem; padding:1.6rem 0; border-top:1px solid var(--line) }
+  .issue:first-of-type{ border-top:2px solid var(--rule) }
+  .issue .k{ font-family:var(--mono); font-weight:600; font-size:.95rem; line-height:1.5 }
+  .issue .k span{ display:block; font-weight:400; color:var(--ink-mute); font-size:.78rem; margin-top:.3rem }
+  .issue h3{ font-size:1.25rem; font-weight:800; margin-bottom:.4rem }
+  .issue p{ margin:0!important }
+  .issue .arrow{ color:var(--accent); font-weight:600 }
+  @media(max-width:620px){ .issue{ grid-template-columns:1fr } }
+
+  /* 기록 */
+  .log{ display:grid; grid-template-columns:5rem 1fr auto; gap:.3rem 2rem; padding:1.4rem 0; border-top:1px solid var(--line); align-items:baseline }
+  .log:first-of-type{ border-top:2px solid var(--rule) }
+  .log .no{ font-family:var(--mono); font-size:.8rem; color:var(--ink-mute) }
+  .log h3{ font-size:1.2rem; font-weight:800; margin-bottom:.35rem }
+  .log p{ margin:0!important; font-size:1rem!important }
+  .pill{ font-family:var(--mono); font-size:.68rem; letter-spacing:.04em; padding:.25rem .65rem; border-radius:100px; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap }
+  .pill.live{ border-color:var(--accent); color:var(--accent) }
+  @media(max-width:620px){ .log{ grid-template-columns:1fr } .log .pill{ justify-self:start } }
+
+  /* 시작 */
+  .quote{ font-size:clamp(2rem,5.5vw,3.8rem); font-weight:800; line-height:1.25; letter-spacing:-.04em; margin:0 0 2rem; text-wrap:balance }
+  .quote span{ background:linear-gradient(transparent 62%, color-mix(in srgb,var(--c-smell) 45%,transparent) 62%) }
+
+  /* 사람들 */
+  .people{ display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:2.4rem 2.5rem; margin-top:1rem }
+  .person{ border-top:2px solid var(--rule); padding-top:1.4rem }
+  .person .face{ width:92px; height:92px; display:block; margin-bottom:1rem }
+  .person h3{ font-size:1.2rem; font-weight:800 }
+  .person .role{ font-family:var(--mono); font-size:.8rem; color:var(--accent); margin:.25rem 0 .1rem }
+  .person .org{ font-size:.82rem; color:var(--ink-mute); line-height:1.5 }
+  .person p{ margin:.9rem 0 0!important; font-size:.98rem!important }
+
+  /* 뒤표지 */
+  .back{ padding-block:clamp(4rem,10vw,7rem) clamp(3rem,6vw,4rem) }
+  .back h2{ font-size:clamp(2.2rem,6vw,4.4rem); font-weight:800; line-height:1.15; margin:1rem 0 2rem }
+  .mail{ font-size:clamp(1.4rem,4vw,2.2rem); font-weight:800; color:var(--accent); text-decoration:none; border-bottom:3px solid color-mix(in srgb,var(--accent) 40%,transparent) }
+  .motto{ margin-top:clamp(3rem,7vw,5rem); padding-top:1.4rem; border-top:2px solid var(--rule); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:baseline }
+  .motto p{ margin:0; font-size:clamp(1.2rem,2.6vw,1.6rem); font-weight:800; letter-spacing:-.03em }
+  .motto .eyebrow{ text-align:right }
+  @media (prefers-reduced-motion:reduce){ *{ transition:none!important } }
+</style>
+
+<header class="bar">
+  <div class="page">
+    <a class="brand" href="#top" aria-label="예감소 맨 위로"><svg viewBox="0 0 32 34" width="22" height="24" fill="none" aria-hidden="true"><path d="M16 33V10M16 18L9.5 12.5M16 18L22.5 12.5M16 25L8.5 20M16 25L23.5 20" stroke="var(--tree)" stroke-width="3.2" stroke-linecap="round"/><circle cx="16" cy="6.5" r="4.5" fill="var(--c-hear)"/><circle cx="8" cy="11.5" r="3.8" fill="var(--c-taste)"/><circle cx="24" cy="11.5" r="3.8" fill="var(--c-sight)"/><circle cx="7" cy="19" r="3.8" fill="var(--c-smell)"/><circle cx="25" cy="19" r="3.8" fill="var(--c-taste)"/></svg><span>예감소<span class="on">:ON</span></span></a>
+    <nav aria-label="목차">
+      <a href="#letter">편지</a><a href="#senses">감각</a><a href="#together">함께하기</a><a href="#kkabulgo">까불고</a><a href="#archive">기록</a><a href="#people">사람들</a><a href="#contact">연락</a>
+    </nav>
+    <button class="toggle" id="onoff" aria-pressed="true" type="button"><span class="track" aria-hidden="true"><span class="knob"></span></span><span>감각 <b id="onoff-label">ON</b></span></button>
+  </div>
+</header>
+
+<main class="page" id="top">
+
+  <section class="cover" aria-labelledby="cover-h">
+    <div class="cover-meta"><p class="eyebrow">Issue 01 — Sense</p><p class="eyebrow">2026 Autumn · Hanam</p></div>
+    <svg class="cover-tree" viewBox="0 0 200 220" fill="none" aria-hidden="true">
+      <path d="M100 212V64M100 116L58 82M100 116L142 82M100 162L54 130M100 162L146 130" stroke="var(--tree)" stroke-width="13" stroke-linecap="round"/>
+      <circle cx="100" cy="38" r="27" fill="var(--c-hear)"/><circle cx="48" cy="72" r="23" fill="var(--c-taste)"/>
+      <circle cx="152" cy="72" r="23" fill="var(--c-sight)"/><circle cx="43" cy="122" r="23" fill="var(--c-smell)"/>
+      <circle cx="157" cy="122" r="23" fill="var(--c-taste)"/>
+    </svg>
+    <div class="cover-body">
+      <h1 id="cover-h">어제 점심,<br>무슨 맛이었나요?</h1>
+      <p class="cover-sub" id="cover-s">기억나지 않는다면, 감각이 잠시 꺼져 있었던 거예요.<br><b>예감소는 일상에서 꺼진 감각을 다시 켜는 예술감각연구소</b>입니다.</p>
+    </div>
+    <div class="cover-foot">
+      <div class="wordmark"><svg viewBox="0 0 32 34" width="22" height="24" fill="none" aria-hidden="true"><path d="M16 33V10M16 18L9.5 12.5M16 18L22.5 12.5M16 25L8.5 20M16 25L23.5 20" stroke="var(--tree)" stroke-width="3.2" stroke-linecap="round"/><circle cx="16" cy="6.5" r="4.5" fill="var(--c-hear)"/><circle cx="8" cy="11.5" r="3.8" fill="var(--c-taste)"/><circle cx="24" cy="11.5" r="3.8" fill="var(--c-sight)"/><circle cx="7" cy="19" r="3.8" fill="var(--c-smell)"/><circle cx="25" cy="19" r="3.8" fill="var(--c-taste)"/></svg><b>예감소<span> : ON</span></b><span>예술감각연구소</span></div>
+      <div class="variants" role="group" aria-label="표지 문장 시안"><span>표지 문장</span>
+        <button type="button" id="v-a" aria-pressed="true">A</button><button type="button" id="v-b" aria-pressed="false">B</button><button type="button" id="v-c" aria-pressed="false">C</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="contents" aria-label="목차">
+    <p class="eyebrow">Contents<br>이번 호의 차례</p>
+    <ol>
+      <li><a href="#letter"><span class="n">01</span><span class="t">에디터의 편지</span><span class="d">느끼지 못한 게 아니라, 느낄 틈이 없었을 뿐</span></a></li>
+      <li><a href="#senses"><span class="n">02</span><span class="t">감각의 목록</span><span class="d">다섯 개가 아니라 열두 개, 그리고 그 너머</span></a></li>
+      <li><a href="#facts"><span class="n">03</span><span class="t">숫자로 본 예감소</span><span class="d">12, 10, 120, 3, 2025</span></a></li>
+      <li><a href="#together"><span class="n">04</span><span class="t">함께할 수 있는 자리</span><span class="d">워크숍 · 팝업 · 콜라보레이션</span></a></li>
+      <li><a href="#kkabulgo"><span class="n">05</span><span class="t">특집 — 까불고 1기</span><span class="d">나의 것을 찾아, 우리의 것으로</span></a></li>
+      <li><a href="#archive"><span class="n">06</span><span class="t">기록</span><span class="d">켜켜이 쌓여가는 프로젝트</span></a></li>
+      <li><a href="#origin"><span class="n">07</span><span class="t">시작</span><span class="d">살아내느라, 참 수고가 많았어요</span></a></li>
+      <li><a href="#people"><span class="n">08</span><span class="t">사람들</span><span class="d">서로 다른 감각을 든 세 명의 수집가</span></a></li>
+      <li><a href="#contact"><span class="n">09</span><span class="t">연락</span><span class="d">감각의 스위치를 켤 시간이라면</span></a></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="letter" aria-labelledby="h-letter">
+    <div><div class="sec-n">01</div><p class="eyebrow">Editor’s Letter</p></div>
+    <div>
+      <h2 id="h-letter">느끼지 못한 게 아니라,<br>느낄 틈이 없었을 뿐</h2>
+      <p class="lead">알람 소리에 눈을 뜨고, 화면을 보며 밥을 먹고, 무엇을 했는지 떠오르지 않는 채로 잠이 듭니다. 바람은 분명 불었고, 커피는 분명 향이 있었을 텐데요.</p>
+      <p>스위치를 끄고 싶어서 끈 사람은 없어요. <b>살아내기 위한 작은 선택들이 하나씩 내려놓았을 뿐</b>이지요. 감기로 코가 막혀 좋아하던 국이 맹물처럼 느껴지던 날처럼, 우리는 늘 사라지고 나서야 그것이 거기 있었다는 걸 알아챕니다.</p>
+      <p>그리고 사람마다 깨어 있는 감각은 달라요. 누구는 소리에, 누구는 색에, 누구는 손끝에 먼저 반응하지요. <b>내가 무엇에 예민하고 무엇에 무딘지 알아차리는 일</b> — 그게 곧 나를 다시 만나는 일이에요.</p>
+      <p>살아 있다고 느끼는 순간은, 감각이 살아 있을 때입니다. 예감소는 그 일을 연구해요. 거창한 치유가 아니라, <b>오늘 하루에 스위치 하나를 켜는 작은 경험</b>으로요.</p>
+      <p class="sign">— 예감소의 세 수집가</p>
+    </div>
+  </section>
+
+  <section class="sec" id="senses" aria-labelledby="h-senses">
+    <div><div class="sec-n">02</div><p class="eyebrow">Sense Index</p></div>
+    <div>
+      <h2 id="h-senses">감각은 다섯 개가<br>아니에요</h2>
+      <p>오감은 이천 년도 더 된 분류일 뿐, 몸에는 교과서에 없는 감각이 더 있습니다. 신비한 육감 이야기가 아니라 몸 안에 진짜로 있는 감각들이에요. <b>살아 있다는 느낌은, 사실 그 안쪽에서 옵니다.</b> 까불고 1기의 첫 만남에서 하루 동안 켜는 열두 개가 이 목록이에요.</p>
+      <div class="index">
+        <h3>누구나 아는 감각에서 시작해</h3>
+        <div class="row"><span class="dot" style="background:var(--c-hear)" aria-hidden="true"></span><span class="no">01</span><span class="nm">청각</span><span class="ds">지금 들리는 소리를, 몇 개나 세어 보았나요</span></div>
+        <div class="row"><span class="dot" style="background:var(--c-touch)" aria-hidden="true"></span><span class="no">02</span><span class="nm">촉각</span><span class="ds">눈을 감고 만진 솔방울의 결</span></div>
+        <div class="row"><span class="dot" style="background:var(--c-taste)" aria-hidden="true"></span><span class="no">03</span><span class="nm">온도</span><span class="ds">미지근한 물에 담갔다 뺀 손끝</span></div>
+        <div class="row"><span class="dot" style="background:var(--c-smell)" aria-hidden="true"></span><span class="no">04</span><span class="nm">후각</span><span class="ds">가을 향 하나에 떠오르는 장면 하나</span></div>
+        <div class="row"><span class="dot" style="background:var(--c-taste)" aria-hidden="true"></span><span class="no">05</span><span class="nm">미각</span><span class="ds">빵 한 조각을, 세 번 멈추며 먹기</span></div>
+        <div class="row"><span class="dot" style="background:var(--c-hear)" aria-hidden="true"></span><span class="no">06</span><span class="nm">입 안의 냄새</span><span class="ds">코를 막으면 맛이 사라지는 이유</span></div>
+        <div class="row"><span class="dot" style="background:var(--c-smell)" aria-hidden="true"></span><span class="no">07</span><span class="nm">맵고 시원한</span><span class="ds">박하 한 조각이 속이는 차가움</span></div>
+        <div class="row"><span class="dot" style="background:var(--c-sight)" aria-hidden="true"></span><span class="no">08</span><span class="nm">시각</span><span class="ds">창밖 3분, 움직이는 것 다섯 개</span></div>
+        <h3>교과서에 없는 감각으로</h3>
+        <div class="row"><span class="dot beyond" aria-hidden="true"></span><span class="no">09</span><span class="nm">위치</span><span class="ds">눈 감고 코끝을 찾아가는 감각</span></div>
+        <div class="row"><span class="dot beyond" aria-hidden="true"></span><span class="no">10</span><span class="nm">두 점</span><span class="ds">손끝은 2mm, 등은 4cm — 몸의 해상도</span></div>
+        <div class="row"><span class="dot beyond" aria-hidden="true"></span><span class="no">11</span><span class="nm">몸속</span><span class="ds">손목을 짚지 않고 심장을 세는 감각</span></div>
+        <div class="row"><span class="dot beyond" aria-hidden="true"></span><span class="no">12</span><span class="nm">연결</span><span class="ds">이 솔방울의 촉감은 무슨 색일까</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="facts" aria-labelledby="h-facts">
+    <div><div class="sec-n">03</div><p class="eyebrow">Facts &amp; Figures</p></div>
+    <div>
+      <h2 id="h-facts">숫자로 본 예감소</h2>
+      <div class="facts">
+        <div class="fact"><div class="num">12</div><p>하루 동안 켜는 감각의 수. 그마저도 전부는 아니에요</p></div>
+        <div class="fact"><div class="num">10<small>명</small></div><p>한 기수의 정원. 깊게 만나기 위해 작게</p></div>
+        <div class="fact"><div class="num">120<small>분</small></div><p>한 번의 만남. 서두르지 않을 만큼</p></div>
+        <div class="fact"><div class="num">3</div><p>서로 다른 감각을 든 수집가</p></div>
+        <div class="fact"><div class="num">2025</div><p>첫 번째 켜 — 하남탐미 「나도 예술가!」</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="together" aria-labelledby="h-together">
+    <div><div class="sec-n">04</div><p class="eyebrow">Work With Us</p></div>
+    <div>
+      <h2 id="h-together">예감소와 함께할 수 있는 자리</h2>
+      <p>완성된 결과물을 만드는 시간이 아니에요. 참여한 분들이 <b>저마다의 감각을 채집해 가는</b> 반나절이지요. 기업과 기관, 브랜드, 작은 모임까지 — 목적과 규모에 맞춰 프로그램을 함께 설계합니다.</p>
+      <div class="offer"><p class="eyebrow">Workshop</p><div><h3>감각 창작 워크숍</h3><p>잠시 멈춰 서서 각자의 감각을 채집하고, 서로를 새롭게 바라보는 반나절. 인원과 목적에 맞춰 구성해 드려요.</p><p class="where">기업 워크숍데이 · 팀 리트릿 · 기관·학교·도서관 프로그램 · 소모임</p></div></div>
+      <div class="offer"><p class="eyebrow">Pop-up · Installation</p><div><h3>감각 팝업 · 설치</h3><p>스쳐 가는 사람의 감각을 살며시 붙잡는 참여형 부스와 설치. 공간의 결에 맞춰, 머리가 아니라 몸으로 느끼는 경험을 짓습니다.</p><p class="where">팝업스토어 · 전시 · 페어 · 지역 축제 · 브랜드 캠페인</p></div></div>
+      <div class="offer"><p class="eyebrow">Collaboration</p><div><h3>콜라보레이션</h3><p>한 번의 행사로 끝나지 않는 협업. 프로그램 공동 기획부터 감각을 담은 굿즈·콘텐츠, 리서치까지 길게 함께 만들어 갑니다.</p><p class="where">브랜드 협업 · 프로그램 공동기획 · 굿즈·콘텐츠 개발 · 리서치</p></div></div>
+      <div class="offer"><p class="eyebrow">In Development</p><div><h3>「감각 스위치」 팀 키트</h3><p>회의실이 그대로 워크숍이 되는 상자. 열두 감각의 조각과 진행 가이드, 각자의 수집 노트를 담아 보내드리면 — 예감소가 가지 않아도 팀이 스스로 멈추고 자기 감각을 마주하는 한 시간이 열려요. <b>함께 만들어갈 첫 파트너를 찾습니다.</b></p></div></div>
+      <div class="ctas">
+        <a class="cta" href="mailto:yesgamso@gmail.com?subject=예감소 워크숍 초청 문의&amp;body=안녕하세요, 예감소에 워크숍을 초청하고 싶습니다.%0D%0A%0D%0A- 함께하고 싶은 분들:%0D%0A- 인원 / 규모:%0D%0A- 원하는 시기:%0D%0A- 하고 싶은 것:%0D%0A">초청 문의하기 ↗</a>
+        <span class="eyebrow">기획서가 없어도 괜찮아요 — 한 줄이면 시작돼요</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kkabulgo" aria-labelledby="h-kk">
+    <div><div class="sec-n">05</div><p class="eyebrow">Feature</p></div>
+    <div>
+      <h2 id="h-kk">까불고 1기 — 나의 것을 찾아,<br>우리의 것으로</h2>
+      <p>하남에서 살아가는 3040과 함께하는 세 번의 토요일. 세 번 모두 같은 걸음으로 걸어요 — <b>먼저 나의 것을 찾고, 그다음 우리의 것으로 합칩니다.</b> 실학박물관 〈실·실·실 프로젝트〉 선정, 참가비 없음.</p>
+      <div class="issue"><div class="k">MY SENSE,<br>OUR SENSE<span>10.17 토 · 인조이풀</span></div><div><h3>나는 어디에 있나?</h3><p>하루에 열두 개의 감각을 켜고, 안대를 쓰고 그린 그림에 붙인 제목이 내 감각의 이름이 됩니다. 마지막엔 열 개의 병이 한 선반에 서요. <span class="arrow">혼자 열두 개, 우리는 백스무 개.</span></p></div></div>
+      <div class="issue"><div class="k">MY COLOR,<br>OUR COLOR<span>10.24 토 · 당정뜰</span></div><div><h3>나의 색, 우리의 색</h3><p>스물네 가지 색에서 한 색에 도착해 이름을 붙이고, 같은 조각 두 장을 받아요. 하나는 나에게, 하나는 우리에게. <span class="arrow">열 개의 색이 한 프레임에서 제3의 색이 됩니다.</span></p></div></div>
+      <div class="issue"><div class="k">MY STORY,<br>OUR STORY<span>10.31 토 · 공간 네샤마</span></div><div><h3>은유로 짓는 이름</h3><p>홀대받아 온 감각과 내가 만든 것들을 먼저 아껴주고, 그 감각에 은유로 이름을 붙여요. <span class="arrow">이름도 직업도 아닌 이름으로 서로를 소개하는 시간.</span></p></div></div>
+      <div class="ctas"><a class="cta ghost" href="https://yesgamso.com/chul" target="_blank" rel="noopener">초대장 보기 ↗</a><span class="eyebrow">최대 10명 · 신청 마감 10월 8일</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="archive" aria-labelledby="h-archive">
+    <div><div class="sec-n">06</div><p class="eyebrow">Archive</p></div>
+    <div>
+      <h2 id="h-archive">켜켜이 쌓여가는 프로젝트</h2>
+      <p>감각을 한 번 켤 때마다 기록이 남고, 그 기록이 한 켜씩 포개어져 지금의 예감소가 됩니다.</p>
+      <div class="log"><span class="no">No.03</span><div><h3>「감각 스위치」 팀 키트</h3><p>회의실이 그대로 워크숍이 되는 상자. 까불고 1기에서 먼저 시험하고 다듬는 중.</p></div><span class="pill">개발 중 · 2026 —</span></div>
+      <div class="log"><span class="no">No.02</span><div><h3>「까불고」 1기 · 철을 느끼다</h3><p>하남 3040과 떠나는 세 번의 감각 탐험. 11월엔 인스타그램에 시리즈로 남깁니다.</p></div><span class="pill live">진행 중 · 2026</span></div>
+      <div class="log"><span class="no">No.01</span><div><h3>하남탐미 「나도 예술가!」</h3><p>어른 10명은 돌에 그림을 그렸고, 초등학생 20명은 점토와 천으로 나를 표현했어요. 어른과 아이가 함께 회복되어야 한다는 걸 여기서 알았어요. <a href="https://yesgamso.com/nado" target="_blank" rel="noopener">기록 보기 ↗</a></p></div><span class="pill">완료 · 2025</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="origin" aria-labelledby="h-origin">
+    <div><div class="sec-n">07</div><p class="eyebrow">Origin</p></div>
+    <div>
+      <h2 id="h-origin" class="quote"><span>살아내느라,</span><br>참 수고가 많았어요.</h2>
+      <p>거창한 예술을 하려던 게 아니었어요. 행복이 대단한 일에서 오는 게 아니라, 그저 <b>일상에서 느끼며 살아내는 것</b>이면 좋겠다는 마음. 예감소는 거기서 시작됐어요.</p>
+      <p>우리도 각자의 일을 하고, 누군가의 엄마이자 아빠로 하루를 건너요. 그런 나 자신을 토닥인다는 건 무엇일까 — 그 물음을 오래 품고 있던 사람들이 같은 자리에 모였습니다. <b>겪어봤기에 압니다.</b> 필요한 건 거창한 위로가 아니라, 오늘 하루에 스위치 하나를 켜는 일이라는 걸.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="people" aria-labelledby="h-people">
+    <div><div class="sec-n">08</div><p class="eyebrow">People</p></div>
+    <div>
+      <h2 id="h-people">서로 다른 감각을 든 사람들</h2>
+      <div class="people">
+        <div class="person"><svg class="face" viewBox="0 0 84 84" fill="none" aria-hidden="true">
+        <path d="M24 17c-9.6 0-16.8 6.6-16.8 15.6 0 4-2.6 5.6-2.6 9.4 0 3.4 3.8 4.6 3.8 8 0 3.6-3.8 5-3.8 8.6 0 4 3.2 6.8 7.2 6.8h23.2c4 0 7.2-2.8 7.2-6.8 0-3.6-3.8-5-3.8-8.6 0-3.4 3.8-4.6 3.8-8 0-3.8-1.8-5.4-1.8-9.4C40.8 23.6 33.6 17 24 17Z" fill="var(--c-hear)"/>
+        <rect x="19" y="44" width="10" height="26" rx="5" fill="var(--skin)"/>
+        <path d="M0 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-taste)"/>
+        <circle cx="24" cy="34" r="14.5" fill="var(--skin)"/>
+        <path d="M9.6 30.5C9.6 22.3 16 17 24 17s14.4 5.3 14.4 13.5C36.5 26.6 33.8 26.4 31 27c-2.6.6-4.8-1.6-7-5-2.2 3.4-4.4 5.6-7 5-2.8-.6-5.5-.4-7.4 3.5Z" fill="var(--c-hear)"/>
+        <circle cx="13" cy="40" r="3.2" fill="var(--c-taste)" opacity=".3"/>
+        <circle cx="35" cy="40" r="3.2" fill="var(--c-taste)" opacity=".3"/>
+        <circle cx="18" cy="35" r="2.1" fill="#3A2E28"/><circle cx="30" cy="35" r="2.1" fill="#3A2E28"/>
+        <path d="M20 41c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+        <circle cx="60" cy="13" r="4.8" fill="var(--c-taste)"/><circle cx="74" cy="26" r="3.6" fill="var(--c-smell)"/>
+        <circle cx="63" cy="45" r="3.4" fill="var(--c-sight)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-touch)"/>
+        </svg><h3>이한나</h3><p class="role">행복수집가</p><p class="org">인조이풀 창작공간 대표</p><p>자신의 생각을 스스로 표현해보는 행복들을 수집해요.</p></div>
+        <div class="person"><svg class="face" viewBox="0 0 84 84" fill="none" aria-hidden="true">
+          <rect x="19" y="40" width="10" height="30" rx="5" fill="var(--skin)"/>
+          <path d="M0 84c0-14 11-22 24-22s24 9 24 22Z" fill="var(--suit)"/>
+          <path d="M18 63l6 8 6-8" stroke="var(--suit-2)" stroke-width="3.2" stroke-linejoin="round" fill="none"/>
+          <circle cx="24" cy="30" r="14.5" fill="var(--skin)"/>
+          <path d="M9.5 30a14.5 14.5 0 0 1 29 0c0-4.4-3.6-7.4-9.2-8.4-2.8-.5-4.6-1.8-6-3.6-2.2 3.8-5.8 5.6-9.4 6.8-3 1-4.4 2.8-4.4 5.2Z" fill="#2E2A26"/>
+          <path d="M15.2 32.6c1.6-2.2 3.8-2.2 5.4 0M27.4 32.6c1.6-2.2 3.8-2.2 5.4 0" stroke="#3A2E28" stroke-width="2.2" stroke-linecap="round"/>
+          <g stroke="#3A342E" stroke-width="1.7" fill="none" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="12.6" y="27.6" width="10.6" height="8.4" rx="1.8"/><rect x="24.8" y="27.6" width="10.6" height="8.4" rx="1.8"/>
+            <path d="M23.2 31.4h1.6M12.6 30.6l-2.9.6M35.4 30.6l2.9.6"/>
+          </g>
+          <path d="M19.6 39.8c2.2 3 6.6 3 8.8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <circle cx="60" cy="13" r="4.8" fill="var(--c-sight)"/><circle cx="74" cy="26" r="3.6" fill="var(--c-hear)"/>
+          <circle cx="63" cy="45" r="3.4" fill="var(--c-smell)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-touch)"/>
+        </svg><h3>김성겸</h3><p class="role">인간수집가</p><p class="org">플레이업 원장</p><p>말과 몸짓 사이에서 피어나는 사람의 이야기를 수집해요.</p></div>
+        <div class="person"><svg class="face" viewBox="0 0 84 84" fill="none" aria-hidden="true">
+          <rect x="19" y="44" width="10" height="26" rx="5" fill="var(--skin)"/>
+          <path d="M0 84c0-12 11-19 24-19s24 7 24 19Z" fill="var(--c-smell)"/>
+          <circle cx="24" cy="34" r="14.5" fill="var(--skin)"/>
+          <path d="M8.5 46.5V33a15.5 15.5 0 0 1 31 0v13.5h-5.5V34H14v12.5Z" fill="#33291F"/>
+          <circle cx="18" cy="36" r="2.1" fill="#3A2E28"/><circle cx="30" cy="36" r="2.1" fill="#3A2E28"/>
+          <circle cx="13" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
+          <circle cx="35" cy="41" r="3" fill="var(--c-taste)" opacity=".3"/>
+          <path d="M20 42.5c2 2.6 6 2.6 8 0" stroke="#3A2E28" stroke-width="2.1" stroke-linecap="round"/>
+          <circle cx="60" cy="13" r="4.8" fill="var(--c-hear)"/><circle cx="74" cy="26" r="3.6" fill="var(--c-sight)"/>
+          <circle cx="63" cy="45" r="3.4" fill="var(--c-smell)"/><circle cx="76" cy="47" r="2.6" fill="var(--c-touch)"/>
+        </svg><h3>박희진</h3><p class="role">컬러수집가</p><p class="org">H.Hee 대표 · 호아따따 디자인팀 실장</p><p>일상을 스쳐 가는 색과 결을 수집해요.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="back" id="contact" aria-labelledby="h-contact">
+    <p class="eyebrow">09 — Contact</p>
+    <h2 id="h-contact">감각의 스위치를 켤 시간이라면,<br>예감소와 함께해요.</h2>
+    <a class="mail" href="mailto:yesgamso@gmail.com?subject=예감소 문의">yesgamso@gmail.com</a>
+    <div class="motto"><p>우리 모두는 원래 예술인이었다.</p><p class="eyebrow">예술감각연구소 예감소 · 경기 하남<br>yesgamso.com</p></div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var V={
+    a:{h:'어제 점심,<br>무슨 맛이었나요?', s:'기억나지 않는다면, 감각이 잠시 꺼져 있었던 거예요.<br><b>예감소는 일상에서 꺼진 감각을 다시 켜는 예술감각연구소</b>입니다.'},
+    b:{h:'하루를 다 살았는데,<br>기억나는 게 없는 날.', s:'느끼는 법을 잊은 게 아니에요. 느낄 틈이 없었을 뿐.<br><b>예감소는 그 틈을 다시 여는 예술감각연구소</b>입니다.'},
+    c:{h:'살아 있다는 느낌,<br>마지막이 언제였나요?', s:'감각은 사라지지 않아요. 잠시 꺼져 있을 뿐.<br><b>예감소는 그 스위치를 함께 켜는 예술감각연구소</b>입니다.'}
+  };
+  var h=document.getElementById('cover-h'), s=document.getElementById('cover-s');
+  ['a','b','c'].forEach(function(k){
+    var b=document.getElementById('v-'+k);
+    b.addEventListener('click',function(){
+      h.innerHTML=V[k].h; s.innerHTML=V[k].s;
+      ['a','b','c'].forEach(function(j){ document.getElementById('v-'+j).setAttribute('aria-pressed', String(j===k)); });
+      try{ localStorage.setItem('yg-cover',k); }catch(e){}
+    });
+  });
+  try{ var saved=localStorage.getItem('yg-cover'); if(saved && V[saved]) document.getElementById('v-'+saved).click(); }catch(e){}
+  var t=document.getElementById('onoff'), l=document.getElementById('onoff-label');
+  t.addEventListener('click',function(){
+    var off=document.body.classList.toggle('is-off');
+    t.setAttribute('aria-pressed', String(!off)); l.textContent = off ? 'OFF' : 'ON';
+  });
+})();
+</script>
