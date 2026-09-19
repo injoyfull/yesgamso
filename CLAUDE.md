@@ -116,7 +116,9 @@ hub: "[[허브_예감소·까불고]]"
 
 | 파일 | 용도 |
 |---|---|
-| `index.html` | **홈**. 단일 파일 자체 완결형. `<head>`에 SVG 파비콘(스위치 마크) 내장 |
+| `index.html` | **홈**. 단일 파일 자체 완결형 |
+| `favicon.ico` · `favicon.svg` · `apple-touch-icon.png` · `icon-192/512.png` · `site.webmanifest` | **파비콘 세트** — 로고(나무 + 오감 다섯 점). 네 페이지 `<head>`가 같은 태그로 연결. svg는 다크 탭에서 줄기를 밝은 초록으로 |
+| `og-home.png` · `og-en.png` · `og-chul.png` | **공유 미리보기 이미지**. 홈·nado는 og-home, 영문은 og-en, 초대장은 og-chul(다른 세션 제작, 필름 스틸). 1200×630(og-chul만 1920×1080) |
 | `chul.html` | **「철을 느끼다」 초대장** (`/chul`) — 실·실·실 참여자 모집. 히어로 CTA와 LAYERS No.02가 연결 |
 | `nado.html` | **「나도 예술가!」 아카이브** (`/nado`) — 2025 하남탐미 기록. LAYERS No.01이 연결 |
 | `en.html` | **영문판** (`/en`) — 해외 문의용. 직역이 아니라 영어권 독자를 위해 다시 쓴 글 |
